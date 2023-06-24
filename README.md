@@ -15,17 +15,8 @@ start: Starts a new game with a fleet of ships placed at user's defined (x,y) co
 endTurn: Ends the player's turn.
 print: This command will print out the game board (Exhibit A):
 
-    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
-   0|   |   |   |   |   |   |   |   |   |   |
-   1|   |   |   |   |   |   |   |   |   |   |
-   2|   |   |   |   |   |   |   | g |   |   |
-   3|   |   | d | d | d |   |   |   |   |   |
-   4|   |   |   |   |   |   | g |   | c |   |
-   5|   |   |   |   |   |   |   |   | c |   |
-   6|   |   |   |   |   |   |   |   | c |   |
-   7|   | g |   |   |   | d |   |   | c |   |
-   8|   |   |   |   |   | d |   |   |   |   |
-   9|   |   |   |   |   | d |   |   |   | g |
+![image](https://github.com/felixeu31/katalyst-battleships-csharp/assets/22452588/88b9e3b1-760a-4d8c-ac61-6a0c9639adc9)
+
 fire: Launches a torpedo at the given (x,y) coordinates.
 If the (x,y) coordinate is sea then the position will be marked with 'o'.
 If the (x,y) coordinate is a ship then the position will be marked with 'x'.
@@ -40,26 +31,8 @@ A horizontal destroyer on grid reference (2,3), (3,3) and (4,3), but when report
 A vertical destroyer on ref (5,5), (5,6) and (5,7) but you'll only need to reference (5,5) when reporting.
 Using Exhibit A above, here is a battle report based on the ship positions:
 
-[ Player1
- Total shots: 23
- Misses: 15
- Hits: 8
- Ships Sunk: [ 
-	Gunship: (1,7),
-	Gunship: (9,9),
-	Gunship: (7, 2),
-	Destroyer (2,3) ]
-    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
-   0|   |   | o |   |   |   |   |   |   |   |
-   1|   | o |   | o |   |   |   |   |   |   |
-   2|   | o |   |   |   |   |   | X |   |   |
-   3|   |   | X | X | X |   |   |   |   |   |
-   4|   | o |   |   |   |   | g |   | c |   |
-   5|   | o | o |   |   | o |   |   | c |   |
-   6|   |   |   | o |   |   | o |   | c |   |
-   7|   | X |   |   |   | d |   |   | x |   |
-   8|   |   | o | o |   | d |   |   | o |   |
-   9|   |   |   |   | o | x | o |   |   | X |
+![image](https://github.com/felixeu31/katalyst-battleships-csharp/assets/22452588/86dc3d67-8d89-47b5-b419-fa220150bf08)
+
 Sunk ships have all their coordinates marked with an uppercase X and hit cells have a lower case x where they were not sunk.
 
 ## Restrictions
