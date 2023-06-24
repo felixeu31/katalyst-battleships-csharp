@@ -1,12 +1,13 @@
 # katalyst-battleships-csharp
 [Original Battleships kata from Codurance](https://www.codurance.com/katas/battleships)
+[Original Battleships rules](hasbro.com/common/instruct/battleship.pdf)
 
 ##  Introduction
 This version of the classic game has three ships:
 
-Carrier: 4 cells - represented on a board with 'c'
-Destroyer: 3 cells - represented on a board with 'd'
-Gun Ship: 1 cell - represented on a board with 'g'
+- Carrier: 4 cells  represented on a board with 'c'
+- Destroyer: 3 cells  represented on a board with 'd'
+- Gun Ship: 1 cell  represented on a board with 'g'
 
 Create a program that allows the user to specify commands for playing battleship. The commands available are:
 
