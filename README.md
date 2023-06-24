@@ -11,10 +11,10 @@ This version of the classic game has three ships:
 
 Create a program that allows the user to specify commands for playing battleship. The commands available are:
 
-addPlayer: Creates a player for the game.
-start: Starts a new game with a fleet of ships placed at user's defined (x,y) coordinates.
-endTurn: Ends the player's turn.
-print: This command will print out the game board (Exhibit A):
+- addPlayer: Creates a player for the game.
+- start: Starts a new game with a fleet of ships placed at user's defined (x,y) coordinates.
+- endTurn: Ends the player's turn.
+- print: This command will print out the game board (Exhibit A):
 
 ![image](https://github.com/felixeu31/katalyst-battleships-csharp/assets/22452588/88b9e3b1-760a-4d8c-ac61-6a0c9639adc9)
 
