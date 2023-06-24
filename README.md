@@ -18,10 +18,10 @@ Create a program that allows the user to specify commands for playing battleship
 
 ![image](https://github.com/felixeu31/katalyst-battleships-csharp/assets/22452588/88b9e3b1-760a-4d8c-ac61-6a0c9639adc9)
 
-fire: Launches a torpedo at the given (x,y) coordinates.
-If the (x,y) coordinate is sea then the position will be marked with 'o'.
-If the (x,y) coordinate is a ship then the position will be marked with 'x'.
-If a ship has all cells hit then a message should print notifying the player the ship has sunk.
+- fire: Launches a torpedo at the given (x,y) coordinates.
+  - If the (x,y) coordinate is sea then the position will be marked with 'o'.
+  - If the (x,y) coordinate is a ship then the position will be marked with 'x'.
+  - If a ship has all cells hit then a message should print notifying the player the ship has sunk.
 
 
 ## Rules
