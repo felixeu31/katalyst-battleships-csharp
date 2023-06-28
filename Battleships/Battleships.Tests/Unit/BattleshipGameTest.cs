@@ -71,4 +71,46 @@ public class BattleshipGameTest
         printerMock.Verify(x => x.WriteLine("Player1 invoked: start"));
         printerMock.Verify(x => x.WriteLine("Game started! Player1 starts moving"));
     }
+
+    [Fact]
+    public void should_print_player_game()
+    {
+        // arrange
+        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        BattleshipGame game = new BattleshipGame(printerMock.Object);
+
+        // act
+        game.AddPlayer(PlayerId.Player1, new List<List<Coordinates>>());
+        game.AddPlayer(PlayerId.Player2, new List<List<Coordinates>>());
+        game.StartGame(PlayerId.Player1);
+        game.Print(PlayerId.Player1);
+
+        // Arrange
+        printerMock.Verify(x => x.WriteLine("Player1 invoked: print"));
+        printerMock.Verify(x => x.WriteLine(@"- My ocean grid:
+    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+   0|   |   |   |   |   |   |   |   |   |   |
+   1|   |   |   |   |   |   |   |   |   |   |
+   2|   |   |   |   |   |   |   | g |   |   |
+   3|   |   | d | d | d |   |   |   |   |   |
+   4|   |   |   |   |   |   | g |   | c |   |
+   5|   |   |   |   |   |   |   |   | c |   |
+   6|   |   |   |   |   |   |   |   | c |   |
+   7|   | g |   |   |   | d |   |   | c |   |
+   8|   |   |   |   |   | d |   |   |   |   |
+   9|   |   |   |   |   | d |   |   |   | g | 
+   
+- Target ocean grid:
+    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+   0|   |   |   |   |   |   |   |   |   |   |
+   1|   |   |   |   |   |   |   |   |   |   |
+   2|   |   |   |   |   |   |   |   |   |   |
+   3|   |   |   |   |   |   |   |   |   |   |
+   4|   |   |   |   |   |   |   |   |   |   |
+   5|   |   |   |   |   |   |   |   |   |   |
+   6|   |   |   |   |   |   |   |   |   |   |
+   7|   |   |   |   |   |   |   |   |   |   |
+   8|   |   |   |   |   |   |   |   |   |   |
+   9|   |   |   |   |   |   |   |   |   |   | "));
+    }
 }
