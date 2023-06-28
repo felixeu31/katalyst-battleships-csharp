@@ -34,6 +34,7 @@ public class BattleshipGameTest
         game.Players.Should().ContainKey(PlayerId.Player1);
         game.Players[PlayerId.Player1].Should().NotBeNull();
         game.Players[PlayerId.Player1].Ships.Should().BeEquivalentTo(ships);
+        printerMock.Verify(x => x.WriteLine("Player1 added to the game"));
     }
 
     [Fact]
@@ -49,7 +50,9 @@ public class BattleshipGameTest
 
         // Assert
         game.Players.Should().ContainKey(PlayerId.Player1);
+        printerMock.Verify(x => x.WriteLine("Player2 added to the game"));
         game.Players.Should().ContainKey(PlayerId.Player1);
+        printerMock.Verify(x => x.WriteLine("Player2 added to the game"));
     }
 
     [Fact]
