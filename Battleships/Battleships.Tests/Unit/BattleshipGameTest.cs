@@ -70,6 +70,5 @@ public class BattleshipGameTest
         // Arrange
         printerMock.Verify(x => x.WriteLine("Player1 invoked: start"));
         printerMock.Verify(x => x.WriteLine("Game started! Player1 starts moving"));
-
     }
 }
