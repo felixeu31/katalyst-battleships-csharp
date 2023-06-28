@@ -17,6 +17,7 @@ public class BattleshipGame
     public void AddPlayer(PlayerId playerId, List<List<Coordinates>> ships)
     {
         Players.Add(playerId, new Player(playerId, ships));
+        _printer.WriteLine($"{playerId.ToString()} added to the game");
     }
 
     public void StartGame(PlayerId playerId)
