@@ -21,7 +21,7 @@ public class BattleshipGame
 
     public void StartGame(PlayerId playerId)
     {
-        throw new NotImplementedException();
+        _printer.WriteLine($"Game started! {playerId.ToString()} starts moving");
     }
 
     public void EndTurn(PlayerId playerId)
