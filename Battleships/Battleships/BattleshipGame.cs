@@ -2,9 +2,12 @@ namespace Battleships;
 
 public class BattleshipGame
 {
-    public BattleshipGame()
+    private readonly IPrinter _printer;
+
+    public BattleshipGame(IPrinter printer)
     {
-        throw new NotImplementedException();
+        _printer = printer;
+        _printer.WriteLine("Welcome to Battleship game!");
     }
 
     public void AddPlayer(List<List<Coordinates>> ships)
