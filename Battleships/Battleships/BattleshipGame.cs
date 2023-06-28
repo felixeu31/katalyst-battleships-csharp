@@ -10,22 +10,25 @@ public class BattleshipGame
         _printer.WriteLine("Welcome to Battleship game!");
     }
 
-    public void AddPlayer(List<List<Coordinates>> ships)
+    public Dictionary<PlayerId, Player> Players { get; set; }
+
+
+    public void AddPlayer(PlayerId playerId, List<List<Coordinates>> ships)
     {
         throw new NotImplementedException();
     }
 
-    public void StartGame(Player player)
+    public void StartGame(PlayerId playerId)
     {
         throw new NotImplementedException();
     }
 
-    public void EndTurn(Player player)
+    public void EndTurn(PlayerId playerId)
     {
         throw new NotImplementedException();
     }
 
-    public void Print(Player player)
+    public void Print(PlayerId playerId)
     {
         throw new NotImplementedException();
     }

@@ -1,7 +1,6 @@
 namespace Battleships;
 
-public enum Player
+public class Player
 {
-    Player1,
-    Player2
+    public List<List<Coordinates>> Ships { get; set; }
 }
