@@ -7,6 +7,7 @@ public class BattleshipGame
     public BattleshipGame(IPrinter printer)
     {
         _printer = printer;
+        Players = new Dictionary<PlayerId, Player>();
         _printer.WriteLine("Welcome to Battleship game!");
     }
 
@@ -15,7 +16,7 @@ public class BattleshipGame
 
     public void AddPlayer(PlayerId playerId, List<List<Coordinates>> ships)
     {
-        throw new NotImplementedException();
+        Players.Add(playerId, new Player(playerId, ships));
     }
 
     public void StartGame(PlayerId playerId)
