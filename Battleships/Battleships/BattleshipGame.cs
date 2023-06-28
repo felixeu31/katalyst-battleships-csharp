@@ -21,7 +21,13 @@ public class BattleshipGame
 
     public void StartGame(PlayerId playerId)
     {
+        PrintInvokedAction(playerId, "start");
         _printer.WriteLine($"Game started! {playerId.ToString()} starts moving");
+    }
+
+    private void PrintInvokedAction(PlayerId playerId, string action)
+    {
+        _printer.WriteLine($"{playerId.ToString()} invoked: {action}");
     }
 
     public void EndTurn(PlayerId playerId)
