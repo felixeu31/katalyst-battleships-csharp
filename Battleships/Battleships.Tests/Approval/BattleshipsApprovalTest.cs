@@ -14,7 +14,8 @@ public class BattleshipsApprovalTest
         Console.SetIn(new StringReader("a\n"));
 
         // Act
-        BattleshipGame game = new BattleshipGame();
+        IPrinter printer = new ConsolePrinter();
+        BattleshipGame game = new BattleshipGame(printer);
         game.AddPlayer(new List<List<Coordinates>>()
         {
             new() { new() { XPosition = 7, YPosition = 3 } },
