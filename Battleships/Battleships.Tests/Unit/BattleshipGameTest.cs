@@ -51,4 +51,21 @@ public class BattleshipGameTest
         game.Players.Should().ContainKey(PlayerId.Player1);
         game.Players.Should().ContainKey(PlayerId.Player1);
     }
+
+    [Fact]
+    public void should_inform_users_when_game_starts()
+    {
+        // arrange
+        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        BattleshipGame game = new BattleshipGame(printerMock.Object);
+
+        // act
+        game.AddPlayer(PlayerId.Player1, new List<List<Coordinates>>());
+        game.AddPlayer(PlayerId.Player2, new List<List<Coordinates>>());
+        game.StartGame(PlayerId.Player1);
+
+        // Arrange
+        printerMock.Verify(x => x.WriteLine("Game started! Player1 starts moving"));
+
+    }
 }

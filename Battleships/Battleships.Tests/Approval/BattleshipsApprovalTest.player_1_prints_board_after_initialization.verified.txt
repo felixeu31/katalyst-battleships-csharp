@@ -3,7 +3,7 @@ Player1 added to the game
 Player2 added to the game
 
 Player1 invoked: start
-Game started!
+Game started! Player1 starts moving
 
 Player1 invoked: print   
 - My ocean grid:
