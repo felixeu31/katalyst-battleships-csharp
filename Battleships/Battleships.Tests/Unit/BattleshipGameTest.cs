@@ -34,6 +34,21 @@ public class BattleshipGameTest
         game.Players.Should().ContainKey(PlayerId.Player1);
         game.Players[PlayerId.Player1].Should().NotBeNull();
         game.Players[PlayerId.Player1].Ships.Should().BeEquivalentTo(ships);
+    }
 
+    [Fact]
+    public void should_add_second_player()
+    {
+        // arrange
+        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        BattleshipGame game = new BattleshipGame(printerMock.Object);
+
+        // act
+        game.AddPlayer(PlayerId.Player1, new List<List<Coordinates>>());
+        game.AddPlayer(PlayerId.Player2, new List<List<Coordinates>>());
+
+        // Assert
+        game.Players.Should().ContainKey(PlayerId.Player1);
+        game.Players.Should().ContainKey(PlayerId.Player1);
     }
 }
