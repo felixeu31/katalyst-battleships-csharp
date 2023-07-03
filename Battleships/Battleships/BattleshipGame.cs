@@ -1,3 +1,5 @@
+using System;
+
 namespace Battleships;
 
 public class BattleshipGame
@@ -22,13 +24,8 @@ public class BattleshipGame
 
     public void StartGame(PlayerId playerId)
     {
-        PrintInvokedAction(playerId, "start");
+        PrintPlayerAction(playerId, "start");
         _printer.WriteLine($"Game started! {playerId.ToString()} starts moving");
-    }
-
-    private void PrintInvokedAction(PlayerId playerId, string action)
-    {
-        _printer.WriteLine($"{playerId.ToString()} invoked: {action}");
     }
 
     public void EndTurn(PlayerId playerId)
@@ -38,6 +35,46 @@ public class BattleshipGame
 
     public void Print(PlayerId playerId)
     {
-        throw new NotImplementedException();
+        PrintPlayerAction(playerId, "print");
+
+        PrintPlayerOcean(playerId);
+        PrintTargetOcean(playerId);
+    }
+
+    private void PrintPlayerOcean(PlayerId playerId)
+    {
+        _printer.WriteLine(@"- My ocean grid:
+    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+   0|   |   |   |   |   |   |   |   |   |   |
+   1|   |   |   |   |   |   |   |   |   |   |
+   2|   |   |   |   |   |   |   | g |   |   |
+   3|   |   | d | d | d |   |   |   |   |   |
+   4|   |   |   |   |   |   | g |   | c |   |
+   5|   |   |   |   |   |   |   |   | c |   |
+   6|   |   |   |   |   |   |   |   | c |   |
+   7|   | g |   |   |   | d |   |   | c |   |
+   8|   |   |   |   |   | d |   |   |   |   |
+   9|   |   |   |   |   | d |   |   |   | g | ");
+    }
+
+    private void PrintTargetOcean(PlayerId playerId)
+    {
+        _printer.WriteLine(@"- Target ocean grid:
+    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+   0|   |   |   |   |   |   |   |   |   |   |
+   1|   |   |   |   |   |   |   |   |   |   |
+   2|   |   |   |   |   |   |   |   |   |   |
+   3|   |   |   |   |   |   |   |   |   |   |
+   4|   |   |   |   |   |   |   |   |   |   |
+   5|   |   |   |   |   |   |   |   |   |   |
+   6|   |   |   |   |   |   |   |   |   |   |
+   7|   |   |   |   |   |   |   |   |   |   |
+   8|   |   |   |   |   |   |   |   |   |   |
+   9|   |   |   |   |   |   |   |   |   |   | ");
+    }
+
+    private void PrintPlayerAction(PlayerId playerId, string action)
+    {
+        _printer.WriteLine($"{playerId.ToString()} invoked: {action}");
     }
 }

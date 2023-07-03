@@ -80,7 +80,16 @@ public class BattleshipGameTest
         BattleshipGame game = new BattleshipGame(printerMock.Object);
 
         // act
-        game.AddPlayer(PlayerId.Player1, new List<List<Coordinates>>());
+        game.AddPlayer(PlayerId.Player1, new List<List<Coordinates>>()
+        {
+            new() { new() { XPosition = 7, YPosition = 3 } },
+            new() { new() { XPosition = 6, YPosition = 4 } },
+            new() { new() { XPosition = 1, YPosition = 7 } },
+            new() { new() { XPosition = 9, YPosition = 9 } },
+            new() { new() { XPosition = 2, YPosition = 4 }, new() { XPosition = 3, YPosition = 4 }, new() { XPosition = 4, YPosition = 4 } },
+            new() { new() { XPosition = 5, YPosition = 7 }, new() { XPosition = 5, YPosition = 8 }, new() { XPosition = 5, YPosition = 9 } },
+            new() { new() { XPosition = 8, YPosition = 4 }, new() { XPosition = 8, YPosition = 5 }, new() { XPosition = 8, YPosition = 6 }, new() { XPosition = 8, YPosition = 7 } },
+        });
         game.AddPlayer(PlayerId.Player2, new List<List<Coordinates>>());
         game.StartGame(PlayerId.Player1);
         game.Print(PlayerId.Player1);
@@ -98,9 +107,8 @@ public class BattleshipGameTest
    6|   |   |   |   |   |   |   |   | c |   |
    7|   | g |   |   |   | d |   |   | c |   |
    8|   |   |   |   |   | d |   |   |   |   |
-   9|   |   |   |   |   | d |   |   |   | g | 
-   
-- Target ocean grid:
+   9|   |   |   |   |   | d |   |   |   | g | "));
+        printerMock.Verify(x => x.WriteLine(@"- Target ocean grid:
     | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    0|   |   |   |   |   |   |   |   |   |   |
    1|   |   |   |   |   |   |   |   |   |   |
