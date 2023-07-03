@@ -30,7 +30,16 @@ public class BattleshipGame
 
     public void EndTurn(PlayerId playerId)
     {
-        throw new NotImplementedException();
+        PrintPlayerAction(playerId, "end turn");
+        _printer.WriteLine($"{playerId.ToString()} finished its turn, it is turn for {GetOpponent(playerId).ToString()} to move");
+    }
+
+    private PlayerId GetOpponent(PlayerId playerId)
+    {
+        if (playerId.Equals(PlayerId.Player1))
+            return PlayerId.Player2;
+
+        return PlayerId.Player1;
     }
 
     public void Print(PlayerId playerId)
