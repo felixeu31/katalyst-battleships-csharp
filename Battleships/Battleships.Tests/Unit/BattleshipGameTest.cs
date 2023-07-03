@@ -121,4 +121,22 @@ public class BattleshipGameTest
    8|   |   |   |   |   |   |   |   |   |   |
    9|   |   |   |   |   |   |   |   |   |   | "));
     }
+
+
+    [Fact]
+    public void should_inform_users_when_user_ends()
+    {
+        // arrange
+        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        BattleshipGame game = new BattleshipGame(printerMock.Object);
+
+        // act
+        game.AddPlayer(PlayerId.Player1, new List<List<Coordinates>>());
+        game.AddPlayer(PlayerId.Player2, new List<List<Coordinates>>());
+        game.StartGame(PlayerId.Player1);
+
+        // Arrange
+        printerMock.Verify(x => x.WriteLine("Player1 invoked: end turn"));
+        printerMock.Verify(x => x.WriteLine("Player1 finished its turn, it is turn for Player2 to move"));
+    }
 }
