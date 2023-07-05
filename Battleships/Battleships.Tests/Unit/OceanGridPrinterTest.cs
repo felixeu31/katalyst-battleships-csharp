@@ -14,7 +14,7 @@ public class OceanGridPrinterTest
         };
 
         // Act
-        OceanGridPrinter oceanGridPrinter = new OceanGridPrinter();
+        OceanGridPrinter oceanGridPrinter = new OceanGridPrinter(10, 10);
         var result = oceanGridPrinter.PrintOceanGrid(ships);
 
         // Assert
