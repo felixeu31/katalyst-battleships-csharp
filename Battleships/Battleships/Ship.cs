@@ -23,6 +23,10 @@ public class Ship
             {
                 return "d";
             }
+            if (_coordinatesList.Length == 4)
+            {
+                return "c";
+            }
 
             return " ";
         }

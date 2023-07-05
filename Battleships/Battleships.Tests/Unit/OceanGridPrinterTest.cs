@@ -62,12 +62,12 @@ public class OceanGridPrinterTest
 
 
     [Fact]
-    public void should_print_carried()
+    public void should_print_carrier()
     {
         // Arrange
         var ships = new List<Ship>
         {
-            new Ship(new Coordinates(0, 0), new Coordinates(0,1), new Coordinates(0,2), new Coordinates(0,4))
+            new Ship(new Coordinates(0, 0), new Coordinates(0,1), new Coordinates(0,2), new Coordinates(0,3))
         };
 
         // Act
