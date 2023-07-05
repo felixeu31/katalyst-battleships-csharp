@@ -107,7 +107,7 @@ public class BattleshipGameTest
    6|   |   |   |   |   |   |   |   | c |   |
    7|   | g |   |   |   | d |   |   | c |   |
    8|   |   |   |   |   | d |   |   |   |   |
-   9|   |   |   |   |   | d |   |   |   | g | "));
+   9|   |   |   |   |   | d |   |   |   | g |"));
         printerMock.Verify(x => x.WriteLine(@"- Target ocean grid:"));
         printerMock.Verify(x => x.WriteLine(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    0|   |   |   |   |   |   |   |   |   |   |
@@ -119,7 +119,7 @@ public class BattleshipGameTest
    6|   |   |   |   |   |   |   |   |   |   |
    7|   |   |   |   |   |   |   |   |   |   |
    8|   |   |   |   |   |   |   |   |   |   |
-   9|   |   |   |   |   |   |   |   |   |   | "));
+   9|   |   |   |   |   |   |   |   |   |   |"));
     }
 
 

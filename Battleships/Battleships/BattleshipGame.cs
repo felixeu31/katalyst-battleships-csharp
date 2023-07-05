@@ -63,7 +63,7 @@ public class BattleshipGame
    6|   |   |   |   |   |   |   |   | c |   |
    7|   | g |   |   |   | d |   |   | c |   |
    8|   |   |   |   |   | d |   |   |   |   |
-   9|   |   |   |   |   | d |   |   |   | g | ");
+   9|   |   |   |   |   | d |   |   |   | g |");
     }
 
     private void PrintTargetOcean(PlayerId playerId)
@@ -79,7 +79,7 @@ public class BattleshipGame
    6|   |   |   |   |   |   |   |   |   |   |
    7|   |   |   |   |   |   |   |   |   |   |
    8|   |   |   |   |   |   |   |   |   |   |
-   9|   |   |   |   |   |   |   |   |   |   | ");
+   9|   |   |   |   |   |   |   |   |   |   |");
     }
 
     private void PrintPlayerAction(PlayerId playerId, string action)
