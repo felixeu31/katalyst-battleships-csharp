@@ -19,6 +19,10 @@ public class Ship
             {
                 return "g";
             }
+            if (_coordinatesList.Length == 3)
+            {
+                return "d";
+            }
 
             return " ";
         }
