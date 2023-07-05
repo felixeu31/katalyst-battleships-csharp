@@ -31,4 +31,32 @@ public class OceanGridPrinterTest
    8|   |   |   |   |   |   |   |   |   |   |
    9|   |   |   |   |   |   |   |   |   |   |");
     }
+
+    [Fact]
+    public void should_print_destroyer()
+    {
+        // Arrange
+        var ships = new List<Ship>
+        {
+            new Ship(new Coordinates(0, 0), new Coordinates(0,1), new Coordinates(0,2))
+        };
+
+        // Act
+        OceanGridPrinter oceanGridPrinter = new OceanGridPrinter(10, 10);
+        var result = oceanGridPrinter.PrintOceanGrid(ships);
+
+        // Assert
+        result.Should().Be(@"
+    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+   0| d | d | d |   |   |   |   |   |   |   |
+   1|   |   |   |   |   |   |   |   |   |   |
+   2|   |   |   |   |   |   |   |   |   |   |
+   3|   |   |   |   |   |   |   |   |   |   |
+   4|   |   |   |   |   |   |   |   |   |   |
+   5|   |   |   |   |   |   |   |   |   |   |
+   6|   |   |   |   |   |   |   |   |   |   |
+   7|   |   |   |   |   |   |   |   |   |   |
+   8|   |   |   |   |   |   |   |   |   |   |
+   9|   |   |   |   |   |   |   |   |   |   |");
+    }
 }

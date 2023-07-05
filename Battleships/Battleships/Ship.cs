@@ -20,7 +20,7 @@ public class Ship
                 return "g";
             }
 
-            return string.Empty;
+            return " ";
         }
     }
 }
