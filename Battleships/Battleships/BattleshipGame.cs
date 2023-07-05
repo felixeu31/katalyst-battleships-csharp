@@ -53,17 +53,8 @@ public class BattleshipGame
     private void PrintPlayerOcean(PlayerId playerId)
     {
         _printer.WriteLine(@"- My ocean grid:");
-        _printer.WriteLine(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
-   0|   |   |   |   |   |   |   |   |   |   |
-   1|   |   |   |   |   |   |   |   |   |   |
-   2|   |   |   |   |   |   |   | g |   |   |
-   3|   |   | d | d | d |   |   |   |   |   |
-   4|   |   |   |   |   |   | g |   | c |   |
-   5|   |   |   |   |   |   |   |   | c |   |
-   6|   |   |   |   |   |   |   |   | c |   |
-   7|   | g |   |   |   | d |   |   | c |   |
-   8|   |   |   |   |   | d |   |   |   |   |
-   9|   |   |   |   |   | d |   |   |   | g |");
+        var oceanGridPrinter = new OceanGridPrinter(10, 10);
+        _printer.WriteLine(oceanGridPrinter.PrintOceanGrid(Players[playerId].Ships));
     }
 
     private void PrintTargetOcean(PlayerId playerId)
