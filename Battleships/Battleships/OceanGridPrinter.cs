@@ -16,7 +16,6 @@ public class OceanGridPrinter
     {
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.AppendLine();
         stringBuilder.Append(PrintOceanGridHeader());
 
         for (int row = 0; row < _rowNumber; row++)

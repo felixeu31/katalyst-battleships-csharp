@@ -18,8 +18,7 @@ public class OceanGridPrinterTest
         var result = oceanGridPrinter.PrintOceanGrid(ships);
 
         // Assert
-        result.Should().Be(@"
-    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+        result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    0| g |   |   |   |   |   |   |   |   |   |
    1|   |   |   |   |   |   |   |   |   |   |
    2|   |   |   |   |   |   |   |   |   |   |
@@ -46,8 +45,7 @@ public class OceanGridPrinterTest
         var result = oceanGridPrinter.PrintOceanGrid(ships);
 
         // Assert
-        result.Should().Be(@"
-    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+        result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    0| d | d | d |   |   |   |   |   |   |   |
    1|   |   |   |   |   |   |   |   |   |   |
    2|   |   |   |   |   |   |   |   |   |   |
@@ -75,8 +73,7 @@ public class OceanGridPrinterTest
         var result = oceanGridPrinter.PrintOceanGrid(ships);
 
         // Assert
-        result.Should().Be(@"
-    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+        result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    0| c | c | c | c |   |   |   |   |   |   |
    1|   |   |   |   |   |   |   |   |   |   |
    2|   |   |   |   |   |   |   |   |   |   |
