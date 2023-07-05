@@ -96,8 +96,8 @@ public class BattleshipGameTest
 
         // Arrange
         printerMock.Verify(x => x.WriteLine("Player1 invoked: print"));
-        printerMock.Verify(x => x.WriteLine(@"- My ocean grid:
-    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+        printerMock.Verify(x => x.WriteLine(@"- My ocean grid:"));
+        printerMock.Verify(x => x.WriteLine(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    0|   |   |   |   |   |   |   |   |   |   |
    1|   |   |   |   |   |   |   |   |   |   |
    2|   |   |   |   |   |   |   | g |   |   |
@@ -108,8 +108,8 @@ public class BattleshipGameTest
    7|   | g |   |   |   | d |   |   | c |   |
    8|   |   |   |   |   | d |   |   |   |   |
    9|   |   |   |   |   | d |   |   |   | g | "));
-        printerMock.Verify(x => x.WriteLine(@"- Target ocean grid:
-    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+        printerMock.Verify(x => x.WriteLine(@"- Target ocean grid:"));
+        printerMock.Verify(x => x.WriteLine(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    0|   |   |   |   |   |   |   |   |   |   |
    1|   |   |   |   |   |   |   |   |   |   |
    2|   |   |   |   |   |   |   |   |   |   |
