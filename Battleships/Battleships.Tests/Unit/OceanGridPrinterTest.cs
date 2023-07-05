@@ -10,11 +10,7 @@ public class OceanGridPrinterTest
         // Arrange
         var ships = new List<Ship>
         {
-            new Ship(new Coordinates()
-            {
-                XPosition = 0,
-                YPosition = 0
-            })
+            new Ship(new Coordinates(0, 0))
         };
 
         // Act

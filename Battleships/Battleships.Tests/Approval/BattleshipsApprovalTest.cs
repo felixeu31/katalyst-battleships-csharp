@@ -18,13 +18,13 @@ public class BattleshipsApprovalTest
         BattleshipGame game = new BattleshipGame(printer);
         game.AddPlayer(PlayerId.Player1, new List<List<Coordinates>>()
         {
-            new() { new() { XPosition = 7, YPosition = 3 } },
-            new() { new() { XPosition = 6, YPosition = 4 } },
-            new() { new() { XPosition = 1, YPosition = 7 } },
-            new() { new() { XPosition = 9, YPosition = 9 } },
-            new() { new() { XPosition = 2, YPosition = 4 }, new() { XPosition = 3, YPosition = 4 }, new() { XPosition = 4, YPosition = 4 } },
-            new() { new() { XPosition = 5, YPosition = 7 }, new() { XPosition = 5, YPosition = 8 }, new() { XPosition = 5, YPosition = 9 } },
-            new() { new() { XPosition = 8, YPosition = 4 }, new() { XPosition = 8, YPosition = 5 }, new() { XPosition = 8, YPosition = 6 }, new() { XPosition = 8, YPosition = 7 } },
+            new() { new(7, 3) },
+            new() { new(6, 4) },
+            new() { new(1, 7) },
+            new() { new(9, 9) },
+            new() { new(2, 4), new(3, 4), new(4, 4) },
+            new() { new(5, 7), new(5, 8), new(5, 9) },
+            new() { new(8, 4), new(8, 5), new(8, 6), new(8, 7) },
         });
         game.AddPlayer(PlayerId.Player2, new List<List<Coordinates>>() { });
         game.StartGame(PlayerId.Player1);

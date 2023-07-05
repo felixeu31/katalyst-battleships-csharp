@@ -48,16 +48,16 @@ public class OceanGridPrinter
 
         for (int col = 0; col < _columnNumber; col++)
         {
-            string cellRepresentation = GetCellRepresentation(ships, row, col);
+            string cellRepresentation = GetCellRepresentation(ships, new Coordinates(row, col));
             stringBuilder.Append($" {cellRepresentation} |");
         }
 
         return stringBuilder.ToString();
     }
 
-    private string GetCellRepresentation(List<Ship> ships, int row, int col)
+    private string GetCellRepresentation(List<Ship> ships, Coordinates coordinates)
     {
-        var match = ships.SingleOrDefault(x => x.CoordinatesList.Any(y => y.XPosition == row && y.YPosition == col));
+        var match = ships.SingleOrDefault(x => x.CoordinatesList.Contains(coordinates));
 
         if (match != null)
         {
