@@ -16,7 +16,7 @@ public class BattleshipGame
     public Dictionary<PlayerId, Player> Players { get; set; }
 
 
-    public void AddPlayer(PlayerId playerId, List<List<Coordinates>> ships)
+    public void AddPlayer(PlayerId playerId, List<Ship> ships)
     {
         Players.Add(playerId, new Player(playerId, ships));
         _printer.WriteLine($"{playerId.ToString()} added to the game");

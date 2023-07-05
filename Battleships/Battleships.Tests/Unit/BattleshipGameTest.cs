@@ -26,7 +26,7 @@ public class BattleshipGameTest
         BattleshipGame game = new BattleshipGame(printerMock.Object);
 
         // act
-        var ships = new List<List<Coordinates>>();
+        var ships = new List<Ship>();
         game.AddPlayer(PlayerId.Player1, ships);
 
         // Assert
@@ -45,8 +45,8 @@ public class BattleshipGameTest
         BattleshipGame game = new BattleshipGame(printerMock.Object);
 
         // act
-        game.AddPlayer(PlayerId.Player1, new List<List<Coordinates>>());
-        game.AddPlayer(PlayerId.Player2, new List<List<Coordinates>>());
+        game.AddPlayer(PlayerId.Player1, new List<Ship>());
+        game.AddPlayer(PlayerId.Player2, new List<Ship>());
 
         // Assert
         game.Players.Should().ContainKey(PlayerId.Player1);
@@ -63,8 +63,8 @@ public class BattleshipGameTest
         BattleshipGame game = new BattleshipGame(printerMock.Object);
 
         // act
-        game.AddPlayer(PlayerId.Player1, new List<List<Coordinates>>());
-        game.AddPlayer(PlayerId.Player2, new List<List<Coordinates>>());
+        game.AddPlayer(PlayerId.Player1, new List<Ship>());
+        game.AddPlayer(PlayerId.Player2, new List<Ship>());
         game.StartGame(PlayerId.Player1);
 
         // Arrange
@@ -80,17 +80,17 @@ public class BattleshipGameTest
         BattleshipGame game = new BattleshipGame(printerMock.Object);
 
         // act
-        game.AddPlayer(PlayerId.Player1, new List<List<Coordinates>>()
+        game.AddPlayer(PlayerId.Player1, new List<Ship>()
         {
-            new() { new(7, 3) },
-            new() { new(6, 4) },
-            new() { new(1, 7) },
-            new() { new(9, 9) },
-            new() { new(2, 4), new(3, 4), new(4, 4) },
-            new() { new(5, 7), new(5, 8), new(5, 9) },
-            new() { new(8, 4), new(8, 5), new(8, 6), new(8, 7) },
+            new Ship(new Coordinates(7, 3) ),
+            new Ship(new Coordinates(6, 4) ),
+            new Ship(new Coordinates(1, 7) ),
+            new Ship(new Coordinates(9, 9) ),
+            new Ship(new Coordinates(2, 4), new Coordinates(3, 4), new Coordinates(4, 4)),
+            new Ship(new Coordinates(5, 7), new Coordinates(5, 8), new Coordinates(5, 9)),
+            new Ship(new Coordinates(8, 4), new Coordinates(8, 5), new Coordinates(8, 6), new Coordinates(8, 7)),
         });
-        game.AddPlayer(PlayerId.Player2, new List<List<Coordinates>>());
+        game.AddPlayer(PlayerId.Player2, new List<Ship>());
         game.StartGame(PlayerId.Player1);
         game.Print(PlayerId.Player1);
 
@@ -131,8 +131,8 @@ public class BattleshipGameTest
         BattleshipGame game = new BattleshipGame(printerMock.Object);
 
         // act
-        game.AddPlayer(PlayerId.Player1, new List<List<Coordinates>>());
-        game.AddPlayer(PlayerId.Player2, new List<List<Coordinates>>());
+        game.AddPlayer(PlayerId.Player1, new List<Ship>());
+        game.AddPlayer(PlayerId.Player2, new List<Ship>());
         game.StartGame(PlayerId.Player1);
         game.EndTurn(PlayerId.Player1);
 
