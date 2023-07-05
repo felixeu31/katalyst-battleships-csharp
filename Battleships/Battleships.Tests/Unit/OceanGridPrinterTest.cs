@@ -19,7 +19,7 @@ public class OceanGridPrinterTest
 
         // Act
         OceanGridPrinter oceanGridPrinter = new OceanGridPrinter();
-        var result = oceanGridPrinter.Print(ships);
+        var result = oceanGridPrinter.PrintOceanGrid(ships);
 
         // Assert
         result.Should().Be(@"
