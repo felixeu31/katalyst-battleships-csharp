@@ -2,5 +2,6 @@
 
 public interface IOceanGridPrinter
 {
-    string PrintOceanGrid(List<Ship> ships);
+    string PrintPlayersOceanGrid(List<Ship> ships);
+    string PrintTargetOceanGrid(List<Shoots> ships);
 }

@@ -29,7 +29,7 @@ public class BattleshipsApprovalTest
         });
         game.AddPlayer(PlayerId.Player2, new List<Ship>() { });
         game.StartGame(PlayerId.Player1);
-        game.Print(PlayerId.Player1);
+        game.PrintPlayerGameGrids(PlayerId.Player1);
         game.EndTurn(PlayerId.Player1);
 
         // Assert

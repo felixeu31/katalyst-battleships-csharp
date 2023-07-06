@@ -87,10 +87,10 @@ public class BattleshipGameTest
         // act
         var ships = new List<Ship>()
         {
-            new Ship(new Coordinate(2, 7) ),
-            new Ship(new Coordinate(4, 6) ),
-            new Ship(new Coordinate(7, 1) ),
-            new Ship(new Coordinate(9, 9) ),
+            new Ship(new Coordinate(2, 7)),
+            new Ship(new Coordinate(4, 6)),
+            new Ship(new Coordinate(7, 1)),
+            new Ship(new Coordinate(9, 9)),
             new Ship(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
             new Ship(new Coordinate(7, 5), new Coordinate(8, 5), new Coordinate(9, 5)),
             new Ship(new Coordinate(4, 8), new Coordinate(5, 8), new Coordinate(6, 8), new Coordinate(7, 8)),
@@ -98,27 +98,16 @@ public class BattleshipGameTest
         game.AddPlayer(PlayerId.Player1, ships);
         game.AddPlayer(PlayerId.Player2, new List<Ship>());
         game.StartGame(PlayerId.Player1);
-        game.Print(PlayerId.Player1);
+        game.PrintPlayerGameGrids(PlayerId.Player1);
 
         // Arrange
         printerMock.Verify(x => x.WriteLine("Player1 invoked: print"));
         printerMock.Verify(x => x.WriteLine(@"- My ocean grid:"));
-        oceanPrinterMock.Verify(x => x.PrintOceanGrid(ships));
+        oceanPrinterMock.Verify(x => x.PrintPlayersOceanGrid(ships));
 
         printerMock.Verify(x => x.WriteLine(@"- Target ocean grid:"));
-        printerMock.Verify(x => x.WriteLine(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
-   0|   |   |   |   |   |   |   |   |   |   |
-   1|   |   |   |   |   |   |   |   |   |   |
-   2|   |   |   |   |   |   |   |   |   |   |
-   3|   |   |   |   |   |   |   |   |   |   |
-   4|   |   |   |   |   |   |   |   |   |   |
-   5|   |   |   |   |   |   |   |   |   |   |
-   6|   |   |   |   |   |   |   |   |   |   |
-   7|   |   |   |   |   |   |   |   |   |   |
-   8|   |   |   |   |   |   |   |   |   |   |
-   9|   |   |   |   |   |   |   |   |   |   |"));
+        oceanPrinterMock.Verify(x => x.PrintTargetOceanGrid(new List<Shoots>()));
     }
-
 
     [Fact]
     public void should_inform_users_when_user_ends()

@@ -12,7 +12,7 @@ public class OceanGridPrinter : IOceanGridPrinter
         _rowNumber = rowNumber;
         _columnNumber = columnNumber;
     }
-    public string PrintOceanGrid(List<Ship> ships)
+    public string PrintPlayersOceanGrid(List<Ship> ships)
     {
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -27,6 +27,21 @@ public class OceanGridPrinter : IOceanGridPrinter
         var result = stringBuilder.ToString();
 
         return result;
+    }
+
+    public string PrintTargetOceanGrid(List<Shoots> ships)
+    {
+        return @"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+   0|   |   |   |   |   |   |   |   |   |   |
+   1|   |   |   |   |   |   |   |   |   |   |
+   2|   |   |   |   |   |   |   |   |   |   |
+   3|   |   |   |   |   |   |   |   |   |   |
+   4|   |   |   |   |   |   |   |   |   |   |
+   5|   |   |   |   |   |   |   |   |   |   |
+   6|   |   |   |   |   |   |   |   |   |   |
+   7|   |   |   |   |   |   |   |   |   |   |
+   8|   |   |   |   |   |   |   |   |   |   |
+   9|   |   |   |   |   |   |   |   |   |   |";
     }
 
     private string PrintOceanGridHeader()

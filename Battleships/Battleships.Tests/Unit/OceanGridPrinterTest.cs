@@ -15,7 +15,7 @@ public class OceanGridPrinterTest
 
         // Act
         OceanGridPrinter oceanGridPrinter = new OceanGridPrinter(10, 10);
-        var result = oceanGridPrinter.PrintOceanGrid(ships);
+        var result = oceanGridPrinter.PrintPlayersOceanGrid(ships);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -42,7 +42,7 @@ public class OceanGridPrinterTest
 
         // Act
         OceanGridPrinter oceanGridPrinter = new OceanGridPrinter(10, 10);
-        var result = oceanGridPrinter.PrintOceanGrid(ships);
+        var result = oceanGridPrinter.PrintPlayersOceanGrid(ships);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -70,11 +70,36 @@ public class OceanGridPrinterTest
 
         // Act
         OceanGridPrinter oceanGridPrinter = new OceanGridPrinter(10, 10);
-        var result = oceanGridPrinter.PrintOceanGrid(ships);
+        var result = oceanGridPrinter.PrintPlayersOceanGrid(ships);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    0| c | c | c | c |   |   |   |   |   |   |
+   1|   |   |   |   |   |   |   |   |   |   |
+   2|   |   |   |   |   |   |   |   |   |   |
+   3|   |   |   |   |   |   |   |   |   |   |
+   4|   |   |   |   |   |   |   |   |   |   |
+   5|   |   |   |   |   |   |   |   |   |   |
+   6|   |   |   |   |   |   |   |   |   |   |
+   7|   |   |   |   |   |   |   |   |   |   |
+   8|   |   |   |   |   |   |   |   |   |   |
+   9|   |   |   |   |   |   |   |   |   |   |");
+    }
+
+
+
+    [Fact]
+    public void should_print_empty_target_ocean()
+    {
+        // Arrange
+
+        // Act
+        OceanGridPrinter oceanGridPrinter = new OceanGridPrinter(10, 10);
+        var result = oceanGridPrinter.PrintTargetOceanGrid(new List<Shoots>());
+
+        // Assert
+        result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+   0|   |   |   |   |   |   |   |   |   |   |
    1|   |   |   |   |   |   |   |   |   |   |
    2|   |   |   |   |   |   |   |   |   |   |
    3|   |   |   |   |   |   |   |   |   |   |
