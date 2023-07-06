@@ -18,13 +18,13 @@ public class BattleshipsApprovalTest
         BattleshipGame game = new BattleshipGame(printer);
         game.AddPlayer(PlayerId.Player1, new List<Ship>
         {
-            new Ship(new Coordinates(2, 7) ),
-            new Ship(new Coordinates(4, 6) ),
-            new Ship(new Coordinates(7, 1) ),
-            new Ship(new Coordinates(9, 9) ),
-            new Ship(new Coordinates(3, 2), new Coordinates(3, 3), new Coordinates(3, 4)),
-            new Ship(new Coordinates(7, 5), new Coordinates(8, 5), new Coordinates(9, 5)),
-            new Ship(new Coordinates(4, 8), new Coordinates(5, 8), new Coordinates(6, 8), new Coordinates(7, 8)),
+            new Ship(new Coordinate(2, 7) ),
+            new Ship(new Coordinate(4, 6) ),
+            new Ship(new Coordinate(7, 1) ),
+            new Ship(new Coordinate(9, 9) ),
+            new Ship(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
+            new Ship(new Coordinate(7, 5), new Coordinate(8, 5), new Coordinate(9, 5)),
+            new Ship(new Coordinate(4, 8), new Coordinate(5, 8), new Coordinate(6, 8), new Coordinate(7, 8)),
         });
         game.AddPlayer(PlayerId.Player2, new List<Ship>() { });
         game.StartGame(PlayerId.Player1);

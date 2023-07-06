@@ -10,7 +10,7 @@ public class OceanGridPrinterTest
         // Arrange
         var ships = new List<Ship>
         {
-            new Ship(new Coordinates(0, 0))
+            new Ship(new Coordinate(0, 0))
         };
 
         // Act
@@ -37,7 +37,7 @@ public class OceanGridPrinterTest
         // Arrange
         var ships = new List<Ship>
         {
-            new Ship(new Coordinates(0, 0), new Coordinates(0,1), new Coordinates(0,2))
+            new Ship(new Coordinate(0, 0), new Coordinate(0,1), new Coordinate(0,2))
         };
 
         // Act
@@ -65,7 +65,7 @@ public class OceanGridPrinterTest
         // Arrange
         var ships = new List<Ship>
         {
-            new Ship(new Coordinates(0, 0), new Coordinates(0,1), new Coordinates(0,2), new Coordinates(0,3))
+            new Ship(new Coordinate(0, 0), new Coordinate(0,1), new Coordinate(0,2), new Coordinate(0,3))
         };
 
         // Act

@@ -2,28 +2,28 @@
 
 public class Ship
 {
-    private readonly Coordinates[] _coordinatesList;
+    private readonly Coordinate[] _coordinates;
 
-    public Ship(params Coordinates[] coordinatesList)
+    public Ship(params Coordinate[] coordinates)
     {
-        _coordinatesList = coordinatesList;
+        _coordinates = coordinates;
     }
 
-    public Coordinates[] CoordinatesList => _coordinatesList;
+    public Coordinate[] Coordinates => _coordinates;
 
     public string Representation
     {
         get
         {
-            if (_coordinatesList.Length == 1)
+            if (_coordinates.Length == 1)
             {
                 return "g";
             }
-            if (_coordinatesList.Length == 3)
+            if (_coordinates.Length == 3)
             {
                 return "d";
             }
-            if (_coordinatesList.Length == 4)
+            if (_coordinates.Length == 4)
             {
                 return "c";
             }
