@@ -1,6 +1,6 @@
 # katalyst-battleships-csharp
 [Original Battleships kata from Codurance](https://www.codurance.com/katas/battleships)
-[Original Battleships rules](hasbro.com/common/instruct/battleship.pdf)
+[Original Battleships rules](https://hasbro.com/common/instruct/battleship.pdf)
 
 ##  Introduction
 This version of the classic game has three ships:
