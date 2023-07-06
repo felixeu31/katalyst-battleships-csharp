@@ -5,10 +5,12 @@ namespace Battleships;
 public class BattleshipGame
 {
     private readonly IPrinter _printer;
+    private readonly IOceanGridPrinter _oceanGridPrinter;
 
-    public BattleshipGame(IPrinter printer)
+    public BattleshipGame(IPrinter printer, IOceanGridPrinter oceanGridPrinter)
     {
         _printer = printer;
+        _oceanGridPrinter = oceanGridPrinter;
         Players = new Dictionary<PlayerId, Player>();
         _printer.WriteLine("Welcome to Battleship game!");
     }
@@ -53,8 +55,9 @@ public class BattleshipGame
     private void PrintPlayerOcean(PlayerId playerId)
     {
         _printer.WriteLine(@"- My ocean grid:");
-        var oceanGridPrinter = new OceanGridPrinter(10, 10);
-        _printer.WriteLine(oceanGridPrinter.PrintOceanGrid(Players[playerId].Ships));
+        var playerShipsPositions = Players[playerId].Ships;
+        var oceanPrinted = _oceanGridPrinter.PrintOceanGrid(playerShipsPositions);
+        _printer.WriteLine(oceanPrinted);
     }
 
     private void PrintTargetOcean(PlayerId playerId)

@@ -15,7 +15,8 @@ public class BattleshipsApprovalTest
 
         // Act
         IPrinter printer = new ConsolePrinter();
-        BattleshipGame game = new BattleshipGame(printer);
+        IOceanGridPrinter oceanGridPrinter = new OceanGridPrinter();
+        BattleshipGame game = new BattleshipGame(printer, oceanGridPrinter);
         game.AddPlayer(PlayerId.Player1, new List<Ship>
         {
             new Ship(new Coordinate(2, 7) ),

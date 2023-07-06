@@ -10,9 +10,10 @@ public class BattleshipGameTest
     {
         // arrange
         Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IOceanGridPrinter> oceanPrinterMock = new Mock<IOceanGridPrinter>();
 
         // act
-        BattleshipGame game = new BattleshipGame(printerMock.Object);
+        BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
         // assert
         printerMock.Verify(x => x.WriteLine("Welcome to Battleship game!"));
@@ -23,7 +24,8 @@ public class BattleshipGameTest
     {
         // arrange
         Mock<IPrinter> printerMock = new Mock<IPrinter>();
-        BattleshipGame game = new BattleshipGame(printerMock.Object);
+        Mock<IOceanGridPrinter> oceanPrinterMock = new Mock<IOceanGridPrinter>();
+        BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
         // act
         var ships = new List<Ship>();
@@ -42,7 +44,8 @@ public class BattleshipGameTest
     {
         // arrange
         Mock<IPrinter> printerMock = new Mock<IPrinter>();
-        BattleshipGame game = new BattleshipGame(printerMock.Object);
+        Mock<IOceanGridPrinter> oceanPrinterMock = new Mock<IOceanGridPrinter>();
+        BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
         // act
         game.AddPlayer(PlayerId.Player1, new List<Ship>());
@@ -60,7 +63,8 @@ public class BattleshipGameTest
     {
         // arrange
         Mock<IPrinter> printerMock = new Mock<IPrinter>();
-        BattleshipGame game = new BattleshipGame(printerMock.Object);
+        Mock<IOceanGridPrinter> oceanPrinterMock = new Mock<IOceanGridPrinter>();
+        BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
         // act
         game.AddPlayer(PlayerId.Player1, new List<Ship>());
@@ -77,10 +81,11 @@ public class BattleshipGameTest
     {
         // arrange
         Mock<IPrinter> printerMock = new Mock<IPrinter>();
-        BattleshipGame game = new BattleshipGame(printerMock.Object);
+        Mock<IOceanGridPrinter> oceanPrinterMock = new Mock<IOceanGridPrinter>();
+        BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
         // act
-        game.AddPlayer(PlayerId.Player1, new List<Ship>()
+        var ships = new List<Ship>()
         {
             new Ship(new Coordinate(2, 7) ),
             new Ship(new Coordinate(4, 6) ),
@@ -89,7 +94,8 @@ public class BattleshipGameTest
             new Ship(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
             new Ship(new Coordinate(7, 5), new Coordinate(8, 5), new Coordinate(9, 5)),
             new Ship(new Coordinate(4, 8), new Coordinate(5, 8), new Coordinate(6, 8), new Coordinate(7, 8)),
-        });
+        };
+        game.AddPlayer(PlayerId.Player1, ships);
         game.AddPlayer(PlayerId.Player2, new List<Ship>());
         game.StartGame(PlayerId.Player1);
         game.Print(PlayerId.Player1);
@@ -97,17 +103,8 @@ public class BattleshipGameTest
         // Arrange
         printerMock.Verify(x => x.WriteLine("Player1 invoked: print"));
         printerMock.Verify(x => x.WriteLine(@"- My ocean grid:"));
-        printerMock.Verify(x => x.WriteLine(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
-   0|   |   |   |   |   |   |   |   |   |   |
-   1|   |   |   |   |   |   |   |   |   |   |
-   2|   |   |   |   |   |   |   | g |   |   |
-   3|   |   | d | d | d |   |   |   |   |   |
-   4|   |   |   |   |   |   | g |   | c |   |
-   5|   |   |   |   |   |   |   |   | c |   |
-   6|   |   |   |   |   |   |   |   | c |   |
-   7|   | g |   |   |   | d |   |   | c |   |
-   8|   |   |   |   |   | d |   |   |   |   |
-   9|   |   |   |   |   | d |   |   |   | g |"));
+        oceanPrinterMock.Verify(x => x.PrintOceanGrid(ships));
+
         printerMock.Verify(x => x.WriteLine(@"- Target ocean grid:"));
         printerMock.Verify(x => x.WriteLine(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    0|   |   |   |   |   |   |   |   |   |   |
@@ -128,7 +125,8 @@ public class BattleshipGameTest
     {
         // arrange
         Mock<IPrinter> printerMock = new Mock<IPrinter>();
-        BattleshipGame game = new BattleshipGame(printerMock.Object);
+        Mock<IOceanGridPrinter> oceanPrinterMock = new Mock<IOceanGridPrinter>();
+        BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
         // act
         game.AddPlayer(PlayerId.Player1, new List<Ship>());

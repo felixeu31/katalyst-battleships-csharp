@@ -2,7 +2,7 @@
 
 namespace Battleships;
 
-public class OceanGridPrinter
+public class OceanGridPrinter : IOceanGridPrinter
 {
     private readonly int _rowNumber;
     private readonly int _columnNumber;
