@@ -2,26 +2,26 @@
 
 namespace Battleships;
 
-public class OceanGridPrinter : IOceanGridPrinter
+public class OceanGridGenerator : IOceanGridGenerator
 {
     private readonly int _rowNumber;
     private readonly int _columnNumber;
 
-    public OceanGridPrinter(int rowNumber = 10, int columnNumber = 10)
+    public OceanGridGenerator(int rowNumber = 10, int columnNumber = 10)
     {
         _rowNumber = rowNumber;
         _columnNumber = columnNumber;
     }
-    public string PrintPlayersOceanGrid(List<Ship> ships)
+    public string GeneratePlayersOceanGrid(List<Ship> ships)
     {
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.Append(PrintOceanGridHeader());
+        stringBuilder.Append(GenerateceanGridHeader());
 
         for (int row = 0; row < _rowNumber; row++)
         {
             stringBuilder.AppendLine();
-            stringBuilder.Append(PrintOceanGridRow(ships, row));
+            stringBuilder.Append(GenerateOceanGridRow(ships, row));
         }
 
         var result = stringBuilder.ToString();
@@ -29,7 +29,7 @@ public class OceanGridPrinter : IOceanGridPrinter
         return result;
     }
 
-    public string PrintTargetOceanGrid(List<Shoots> ships)
+    public string GenerateTargetOceanGrid(List<Shoots> ships)
     {
         return @"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    0|   |   |   |   |   |   |   |   |   |   |
@@ -44,7 +44,7 @@ public class OceanGridPrinter : IOceanGridPrinter
    9|   |   |   |   |   |   |   |   |   |   |";
     }
 
-    private string PrintOceanGridHeader()
+    private string GenerateceanGridHeader()
     {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.Append($"    |");
@@ -55,7 +55,7 @@ public class OceanGridPrinter : IOceanGridPrinter
         return stringBuilder.ToString();
     }
 
-    private string PrintOceanGridRow(List<Ship> ships, int row)
+    private string GenerateOceanGridRow(List<Ship> ships, int row)
     {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.Append($"   {row}|");

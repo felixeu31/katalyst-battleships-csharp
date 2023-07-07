@@ -2,10 +2,10 @@
 
 namespace Battleships.Tests.Unit;
 
-public class OceanGridPrinterTest
+public class OceanGridGeneratorTest
 {
     [Fact]
-    public void should_print_gun_ship()
+    public void should_generate_gun_ship()
     {
         // Arrange
         var ships = new List<Ship>
@@ -14,8 +14,8 @@ public class OceanGridPrinterTest
         };
 
         // Act
-        OceanGridPrinter oceanGridPrinter = new OceanGridPrinter(10, 10);
-        var result = oceanGridPrinter.PrintPlayersOceanGrid(ships);
+        OceanGridGenerator oceanGridGenerator = new OceanGridGenerator(10, 10);
+        var result = oceanGridGenerator.GeneratePlayersOceanGrid(ships);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -32,7 +32,7 @@ public class OceanGridPrinterTest
     }
 
     [Fact]
-    public void should_print_destroyer()
+    public void should_generate_destroyer()
     {
         // Arrange
         var ships = new List<Ship>
@@ -41,8 +41,8 @@ public class OceanGridPrinterTest
         };
 
         // Act
-        OceanGridPrinter oceanGridPrinter = new OceanGridPrinter(10, 10);
-        var result = oceanGridPrinter.PrintPlayersOceanGrid(ships);
+        OceanGridGenerator oceanGridGenerator = new OceanGridGenerator(10, 10);
+        var result = oceanGridGenerator.GeneratePlayersOceanGrid(ships);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -60,7 +60,7 @@ public class OceanGridPrinterTest
 
 
     [Fact]
-    public void should_print_carrier()
+    public void should_generate_carrier()
     {
         // Arrange
         var ships = new List<Ship>
@@ -69,8 +69,8 @@ public class OceanGridPrinterTest
         };
 
         // Act
-        OceanGridPrinter oceanGridPrinter = new OceanGridPrinter(10, 10);
-        var result = oceanGridPrinter.PrintPlayersOceanGrid(ships);
+        OceanGridGenerator oceanGridGenerator = new OceanGridGenerator(10, 10);
+        var result = oceanGridGenerator.GeneratePlayersOceanGrid(ships);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -85,17 +85,15 @@ public class OceanGridPrinterTest
    8|   |   |   |   |   |   |   |   |   |   |
    9|   |   |   |   |   |   |   |   |   |   |");
     }
-
-
-
+    
     [Fact]
-    public void should_print_empty_target_ocean()
+    public void should_generate_empty_target_ocean()
     {
         // Arrange
 
         // Act
-        OceanGridPrinter oceanGridPrinter = new OceanGridPrinter(10, 10);
-        var result = oceanGridPrinter.PrintTargetOceanGrid(new List<Shoots>());
+        OceanGridGenerator oceanGridGenerator = new OceanGridGenerator(10, 10);
+        var result = oceanGridGenerator.GenerateTargetOceanGrid(new List<Shoots>());
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
