@@ -63,7 +63,7 @@ public class BattleshipGame
     private void PrintTargetOcean(PlayerId playerId)
     {
         _printer.WriteLine(@"- Target ocean grid:");
-        var targetGrid = _oceanGridGenerator.GenerateTargetOceanGrid(new List<Shoots>());
+        var targetGrid = _oceanGridGenerator.GenerateTargetOceanGrid(new List<Shoot>());
         _printer.WriteLine(targetGrid);
     }
 
@@ -74,6 +74,12 @@ public class BattleshipGame
 
     public void Fire(PlayerId playerId, Coordinate coordinate)
     {
-        throw new NotImplementedException();
+        PrintPlayerAction(playerId, "fire");
+
+        var shoot = Players[GetOpponent(playerId)].GetShootAt(coordinate);
+
+        Players[playerId].AddShoot(shoot);
+
+        _printer.WriteLine(shoot.Announce);
     }
 }

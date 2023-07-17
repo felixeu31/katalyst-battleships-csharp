@@ -93,7 +93,7 @@ public class OceanGridGeneratorTest
 
         // Act
         OceanGridGenerator oceanGridGenerator = new OceanGridGenerator(10, 10);
-        var result = oceanGridGenerator.GenerateTargetOceanGrid(new List<Shoots>());
+        var result = oceanGridGenerator.GenerateTargetOceanGrid(new List<Shoot>());
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |

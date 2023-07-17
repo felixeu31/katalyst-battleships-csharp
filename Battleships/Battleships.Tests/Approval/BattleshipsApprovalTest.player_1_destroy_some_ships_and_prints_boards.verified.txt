@@ -6,13 +6,13 @@ Game started! Player1 starts moving
 Player1 invoked: fire
 Miss
 Player1 invoked: fire
-Hit. Destroyer
+Hit
 Player1 invoked: fire
-Hit. Destroyer
+Hit
 Player1 invoked: fire
-Sunk. Gun Ship
+Gun Ship sunk!
 Player1 invoked: fire
-Sunk. Carrier
+Hit
 Player1 invoked: print
 - My ocean grid:
     | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
