@@ -15,11 +15,11 @@ public class Player
 
     public Shoot GetShootAt(Coordinate coordinate)
     {
-        throw new NotImplementedException();
+        return Shoot.Water(coordinate);
     }
 
     public void AddShoot(Shoot shoot)
     {
-        throw new NotImplementedException();
+        Shoots.Add(shoot);
     }
 }

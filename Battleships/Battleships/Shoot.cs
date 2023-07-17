@@ -2,19 +2,10 @@
 
 public record Shoot(Coordinate Coordinate, ShootDamage ShootDamage, ShipType? ShipType = null)
 {
-    public string Announce => string.Empty;
-}
+    public string Announce => "Miss";
 
-public enum ShootDamage
-{
-    Water,
-    Hit,
-    Sunk
-}
-
-public enum ShipType
-{
-    Gunship,
-    Destroyer,
-    Carrier
+    public static Shoot Water(Coordinate coordinate)
+    {
+        return new Shoot(coordinate, ShootDamage.Water);
+    }
 }
