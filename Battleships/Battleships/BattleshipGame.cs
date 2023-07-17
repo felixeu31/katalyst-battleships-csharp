@@ -71,4 +71,9 @@ public class BattleshipGame
     {
         _printer.WriteLine($"{playerId.ToString()} invoked: {action}");
     }
+
+    public void Fire(PlayerId playerId, Coordinate coordinate)
+    {
+        throw new NotImplementedException();
+    }
 }
