@@ -190,7 +190,7 @@ public class BattleshipGameTest
     }
 
     [Fact]
-    public void should_register_player_sunk_shoot()
+    public void should_register_player_gunship_sunk_shoot()
     {
         // arrange
         Mock<IPrinter> printerMock = new Mock<IPrinter>();
@@ -215,7 +215,7 @@ public class BattleshipGameTest
 
         // Arrange
         var shoot = game.Players[PlayerId.Player1].Shoots[0];
-        shoot.Should().Be(new Shoot(new Coordinate(2, 7), ShootDamage.Hit));
+        shoot.Should().Be(new Shoot(new Coordinate(2, 7), ShootDamage.Sunk));
         shoot.Announce.Should().Be("Gun Ship sunk!");
     }
 }

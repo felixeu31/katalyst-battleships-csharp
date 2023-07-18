@@ -10,6 +10,10 @@ public record Shoot(Coordinate Coordinate, ShootDamage ShootDamage, ShipType? Sh
             {
                 return "Hit";
             }
+            if (ShootDamage == ShootDamage.Sunk)
+            {
+                return "Gun Ship sunk!";
+            }
 
             return "Miss";
         }
@@ -23,5 +27,10 @@ public record Shoot(Coordinate Coordinate, ShootDamage ShootDamage, ShipType? Sh
     public static Shoot Hit(Coordinate coordinate)
     {
         return new Shoot(coordinate, ShootDamage.Hit);
+    }
+
+    public static Shoot Sunk(Coordinate coordinate)
+    {
+        return new Shoot(coordinate, ShootDamage.Sunk);
     }
 }

@@ -31,4 +31,12 @@ public class Ship
             return " ";
         }
     }
+
+    public List<Coordinate> HitCoordinates { get; set; } = new List<Coordinate>();
+    public bool IsSunk => _coordinates.All(x => HitCoordinates.Contains(x));
+
+    public void Hit(Coordinate coordinate)
+    {
+        HitCoordinates.Add(coordinate);
+    }
 }
