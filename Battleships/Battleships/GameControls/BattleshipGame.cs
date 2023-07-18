@@ -79,7 +79,7 @@ public class BattleshipGame
     {
         PrintPlayerAction(playerId, "fire");
 
-        var shoot = Players[GetOpponent(playerId)].ShootedAt(coordinate);
+        var shoot = Players[GetOpponent(playerId)].ShootAt(coordinate);
 
         Players[playerId].AddShoot(shoot);
 

@@ -1,4 +1,5 @@
 ﻿using Battleships.GameControls;
+using Battleships.Shoots;
 
 namespace Battleships.Ships;
 
@@ -39,8 +40,15 @@ public class Ship
     public bool IsSunk => _coordinates.All(x => HitCoordinates.Contains(x));
     public ShipType ShipType { get; }
 
-    public void Hit(Coordinate coordinate)
+    public Shoot ShootAt(Coordinate coordinate)
     {
         HitCoordinates.Add(coordinate);
+
+        if (IsSunk)
+        {
+            return Shoot.Sunk(coordinate, ShipType);
+        }
+
+        return Shoot.Hit(coordinate);
     }
 }

@@ -16,20 +16,13 @@ public class Player
         Shoots = new List<Shoot>();
     }
 
-    public Shoot ShootedAt(Coordinate coordinate)
+    public Shoot ShootAt(Coordinate coordinate)
     {
         var ship = Ships.FirstOrDefault(x => x.Coordinates.Contains(coordinate));
 
         if (ship is not null)
         {
-            ship.Hit(coordinate);
-
-            if (ship.IsSunk)
-            {
-                return Shoot.Sunk(coordinate, ship.ShipType);
-            }
-
-            return Shoot.Hit(coordinate);
+            return ship.ShootAt(coordinate);
         }
 
         return Shoot.Water(coordinate);
