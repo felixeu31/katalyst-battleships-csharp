@@ -15,6 +15,13 @@ public class Player
 
     public Shoot GetShootAt(Coordinate coordinate)
     {
+        var ship = Ships.FirstOrDefault(x => x.Coordinates.Contains(coordinate));
+
+        if (ship is not null)
+        {
+            return Shoot.Hit(coordinate);
+        }
+
         return Shoot.Water(coordinate);
     }
 
