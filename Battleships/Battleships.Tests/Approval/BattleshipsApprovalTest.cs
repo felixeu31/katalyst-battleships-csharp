@@ -79,6 +79,7 @@ public class BattleshipsApprovalTest
         game.Fire(PlayerId.Player1, new Coordinate(3, 2));
         game.Fire(PlayerId.Player1, new Coordinate(3, 3));
         game.Fire(PlayerId.Player1, new Coordinate(9, 9));
+        game.Fire(PlayerId.Player1, new Coordinate(4, 8));
         game.PrintPlayerGameGrids(PlayerId.Player1);
         game.EndTurn(PlayerId.Player1);
 
