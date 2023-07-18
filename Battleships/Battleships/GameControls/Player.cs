@@ -1,6 +1,7 @@
+using Battleships.Ships;
 using Battleships.Shoots;
 
-namespace Battleships;
+namespace Battleships.GameControls;
 
 public class Player
 {

@@ -1,4 +1,6 @@
-﻿namespace Battleships;
+﻿using Battleships.GameControls;
+
+namespace Battleships.Ships;
 
 public class Ship
 {

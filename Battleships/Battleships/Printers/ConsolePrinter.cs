@@ -1,4 +1,4 @@
-namespace Battleships;
+namespace Battleships.Printers;
 
 public class ConsolePrinter : IPrinter
 {

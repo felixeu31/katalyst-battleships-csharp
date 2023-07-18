@@ -1,4 +1,4 @@
-namespace Battleships;
+namespace Battleships.GameControls;
 
 public enum PlayerId
 {

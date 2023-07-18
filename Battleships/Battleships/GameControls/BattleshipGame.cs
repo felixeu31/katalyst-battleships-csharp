@@ -1,7 +1,9 @@
 using System;
+using Battleships.Printers;
+using Battleships.Ships;
 using Battleships.Shoots;
 
-namespace Battleships;
+namespace Battleships.GameControls;
 
 public class BattleshipGame
 {

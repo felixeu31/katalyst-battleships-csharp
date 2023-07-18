@@ -1,6 +1,7 @@
-﻿using Battleships.Shoots;
+﻿using Battleships.Ships;
+using Battleships.Shoots;
 
-namespace Battleships;
+namespace Battleships.Printers;
 
 public interface IOceanGridGenerator
 {

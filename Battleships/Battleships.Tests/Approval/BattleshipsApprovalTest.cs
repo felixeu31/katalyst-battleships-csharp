@@ -1,4 +1,7 @@
 using System.Text;
+using Battleships.GameControls;
+using Battleships.Printers;
+using Battleships.Ships;
 
 namespace Battleships.Tests.Approval;
 

@@ -1,4 +1,7 @@
-﻿namespace Battleships.Shoots;
+﻿using Battleships.GameControls;
+using Battleships.Ships;
+
+namespace Battleships.Shoots;
 
 public abstract record Shoot(Coordinate Coordinate, ShootDamage ShootDamage, ShipType? ShipType = null)
 {
