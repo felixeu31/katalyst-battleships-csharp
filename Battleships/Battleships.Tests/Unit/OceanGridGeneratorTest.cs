@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using Battleships.Shoots;
+using FluentAssertions;
 
 namespace Battleships.Tests.Unit;
 

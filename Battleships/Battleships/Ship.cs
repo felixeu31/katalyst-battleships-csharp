@@ -7,6 +7,7 @@ public class Ship
     public Ship(params Coordinate[] coordinates)
     {
         _coordinates = coordinates;
+        ShipType = ShipType.Gunship;
     }
 
     public Coordinate[] Coordinates => _coordinates;
@@ -34,6 +35,7 @@ public class Ship
 
     public List<Coordinate> HitCoordinates { get; set; } = new List<Coordinate>();
     public bool IsSunk => _coordinates.All(x => HitCoordinates.Contains(x));
+    public ShipType ShipType { get; }
 
     public void Hit(Coordinate coordinate)
     {

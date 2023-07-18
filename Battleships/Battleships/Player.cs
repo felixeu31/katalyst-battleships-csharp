@@ -1,3 +1,5 @@
+using Battleships.Shoots;
+
 namespace Battleships;
 
 public class Player
@@ -23,7 +25,7 @@ public class Player
 
             if (ship.IsSunk)
             {
-                return Shoot.Sunk(coordinate);
+                return Shoot.Sunk(coordinate, ship.ShipType);
             }
 
             return Shoot.Hit(coordinate);

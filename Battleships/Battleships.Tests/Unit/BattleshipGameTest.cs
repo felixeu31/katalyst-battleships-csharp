@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using Battleships.Shoots;
+using FluentAssertions;
 using Moq;
 
 namespace Battleships.Tests.Unit;
@@ -154,7 +155,7 @@ public class BattleshipGameTest
 
         // Arrange
         var shoot = game.Players[PlayerId.Player1].Shoots[0];
-        shoot.Should().Be(new Shoot(new Coordinate(3, 0), ShootDamage.Water));
+        shoot.Should().Be(Shoot.Water(new Coordinate(3, 0)));
         shoot.Announce.Should().Be("Miss");
     }
 
@@ -185,7 +186,7 @@ public class BattleshipGameTest
 
         // Arrange
         var shoot = game.Players[PlayerId.Player1].Shoots[0];
-        shoot.Should().Be(new Shoot(new Coordinate(3, 2), ShootDamage.Hit));
+        shoot.Should().Be(Shoot.Hit(new Coordinate(3, 2)));
         shoot.Announce.Should().Be("Hit");
     }
 
@@ -215,7 +216,7 @@ public class BattleshipGameTest
 
         // Arrange
         var shoot = game.Players[PlayerId.Player1].Shoots[0];
-        shoot.Should().Be(new Shoot(new Coordinate(2, 7), ShootDamage.Sunk));
+        shoot.Should().Be(Shoot.Sunk(new Coordinate(2, 7), ShipType.Gunship));
         shoot.Announce.Should().Be("Gun Ship sunk!");
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Battleships;
+﻿namespace Battleships.Shoots;
 
 public enum ShootDamage
 {
