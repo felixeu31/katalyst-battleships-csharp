@@ -10,7 +10,7 @@ Hit
 Player1 invoked: fire
 Hit
 Player1 invoked: fire
-Gun Ship sunk!
+Gunship sunk!
 Player1 invoked: fire
 Hit
 Player1 invoked: print
