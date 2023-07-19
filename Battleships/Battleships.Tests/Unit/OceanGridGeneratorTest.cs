@@ -14,7 +14,7 @@ public class OceanGridGeneratorTest
         // Arrange
         var ships = new List<Ship>
         {
-            new Ship(new Coordinate(0, 0))
+            ShipFactory.Build(new Coordinate(0, 0))
         };
 
         // Act
@@ -41,7 +41,7 @@ public class OceanGridGeneratorTest
         // Arrange
         var ships = new List<Ship>
         {
-            new Ship(new Coordinate(0, 0), new Coordinate(0,1), new Coordinate(0,2))
+            ShipFactory.Build(new Coordinate(0, 0), new Coordinate(0,1), new Coordinate(0,2))
         };
 
         // Act
@@ -69,7 +69,7 @@ public class OceanGridGeneratorTest
         // Arrange
         var ships = new List<Ship>
         {
-            new Ship(new Coordinate(0, 0), new Coordinate(0,1), new Coordinate(0,2), new Coordinate(0,3))
+            ShipFactory.Build(new Coordinate(0, 0), new Coordinate(0,1), new Coordinate(0,2), new Coordinate(0,3))
         };
 
         // Act

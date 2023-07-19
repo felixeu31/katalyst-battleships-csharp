@@ -91,13 +91,13 @@ public class BattleshipGameTest
         // act
         var ships = new List<Ship>()
         {
-            new Ship(new Coordinate(2, 7)),
-            new Ship(new Coordinate(4, 6)),
-            new Ship(new Coordinate(7, 1)),
-            new Ship(new Coordinate(9, 9)),
-            new Ship(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
-            new Ship(new Coordinate(7, 5), new Coordinate(8, 5), new Coordinate(9, 5)),
-            new Ship(new Coordinate(4, 8), new Coordinate(5, 8), new Coordinate(6, 8), new Coordinate(7, 8)),
+            ShipFactory.Build(new Coordinate(2, 7)),
+            ShipFactory.Build(new Coordinate(4, 6)),
+            ShipFactory.Build(new Coordinate(7, 1)),
+            ShipFactory.Build(new Coordinate(9, 9)),
+            ShipFactory.Build(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
+            ShipFactory.Build(new Coordinate(7, 5), new Coordinate(8, 5), new Coordinate(9, 5)),
+            ShipFactory.Build(new Coordinate(4, 8), new Coordinate(5, 8), new Coordinate(6, 8), new Coordinate(7, 8)),
         };
         game.AddPlayer(PlayerId.Player1, ships);
         game.AddPlayer(PlayerId.Player2, new List<Ship>());
@@ -143,13 +143,13 @@ public class BattleshipGameTest
         // act
         var ships = new List<Ship>()
         {
-            new Ship(new Coordinate(2, 7)),
-            new Ship(new Coordinate(4, 6)),
-            new Ship(new Coordinate(7, 1)),
-            new Ship(new Coordinate(9, 9)),
-            new Ship(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
-            new Ship(new Coordinate(7, 5), new Coordinate(8, 5), new Coordinate(9, 5)),
-            new Ship(new Coordinate(4, 8), new Coordinate(5, 8), new Coordinate(6, 8), new Coordinate(7, 8)),
+            ShipFactory.Build(new Coordinate(2, 7)),
+            ShipFactory.Build(new Coordinate(4, 6)),
+            ShipFactory.Build(new Coordinate(7, 1)),
+            ShipFactory.Build(new Coordinate(9, 9)),
+            ShipFactory.Build(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
+            ShipFactory.Build(new Coordinate(7, 5), new Coordinate(8, 5), new Coordinate(9, 5)),
+            ShipFactory.Build(new Coordinate(4, 8), new Coordinate(5, 8), new Coordinate(6, 8), new Coordinate(7, 8)),
         };
         game.AddPlayer(PlayerId.Player1, new List<Ship>());
         game.AddPlayer(PlayerId.Player2, ships);
@@ -174,13 +174,13 @@ public class BattleshipGameTest
         // act
         var ships = new List<Ship>()
         {
-            new Ship(new Coordinate(2, 7)),
-            new Ship(new Coordinate(4, 6)),
-            new Ship(new Coordinate(7, 1)),
-            new Ship(new Coordinate(9, 9)),
-            new Ship(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
-            new Ship(new Coordinate(7, 5), new Coordinate(8, 5), new Coordinate(9, 5)),
-            new Ship(new Coordinate(4, 8), new Coordinate(5, 8), new Coordinate(6, 8), new Coordinate(7, 8)),
+            ShipFactory.Build(new Coordinate(2, 7)),
+            ShipFactory.Build(new Coordinate(4, 6)),
+            ShipFactory.Build(new Coordinate(7, 1)),
+            ShipFactory.Build(new Coordinate(9, 9)),
+            ShipFactory.Build(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
+            ShipFactory.Build(new Coordinate(7, 5), new Coordinate(8, 5), new Coordinate(9, 5)),
+            ShipFactory.Build(new Coordinate(4, 8), new Coordinate(5, 8), new Coordinate(6, 8), new Coordinate(7, 8)),
         };
         game.AddPlayer(PlayerId.Player1, new List<Ship>());
         game.AddPlayer(PlayerId.Player2, ships);
@@ -204,13 +204,13 @@ public class BattleshipGameTest
         // act
         var ships = new List<Ship>()
         {
-            new Ship(new Coordinate(2, 7)),
-            new Ship(new Coordinate(4, 6)),
-            new Ship(new Coordinate(7, 1)),
-            new Ship(new Coordinate(9, 9)),
-            new Ship(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
-            new Ship(new Coordinate(7, 5), new Coordinate(8, 5), new Coordinate(9, 5)),
-            new Ship(new Coordinate(4, 8), new Coordinate(5, 8), new Coordinate(6, 8), new Coordinate(7, 8)),
+            ShipFactory.Build(new Coordinate(2, 7)),
+            ShipFactory.Build(new Coordinate(4, 6)),
+            ShipFactory.Build(new Coordinate(7, 1)),
+            ShipFactory.Build(new Coordinate(9, 9)),
+            ShipFactory.Build(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
+            ShipFactory.Build(new Coordinate(7, 5), new Coordinate(8, 5), new Coordinate(9, 5)),
+            ShipFactory.Build(new Coordinate(4, 8), new Coordinate(5, 8), new Coordinate(6, 8), new Coordinate(7, 8)),
         };
         game.AddPlayer(PlayerId.Player1, new List<Ship>());
         game.AddPlayer(PlayerId.Player2, ships);
