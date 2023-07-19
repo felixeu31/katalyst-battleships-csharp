@@ -9,6 +9,12 @@ public class OceanGridGenerator : IOceanGridGenerator
 {
     private readonly int _rowNumber;
     private readonly int _columnNumber;
+    private readonly Dictionary<ShootDamage, string> _shootDamageRepresentationMap = new()
+    {
+        { ShootDamage.Water , "o"},
+        { ShootDamage.Hit , "x"},
+        { ShootDamage.Sunk , "X"}
+    };
 
     public OceanGridGenerator(int rowNumber = 10, int columnNumber = 10)
     {
@@ -19,7 +25,7 @@ public class OceanGridGenerator : IOceanGridGenerator
     {
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.Append(GenerateceanGridHeader());
+        stringBuilder.Append(GenerateOceanGridHeader());
 
         for (int row = 0; row < _rowNumber; row++)
         {
@@ -34,20 +40,22 @@ public class OceanGridGenerator : IOceanGridGenerator
 
     public string GenerateTargetOceanGrid(List<Shoot> ships)
     {
-        return @"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
-   0|   |   |   |   |   |   |   |   |   |   |
-   1|   |   |   |   |   |   |   |   |   |   |
-   2|   |   |   |   |   |   |   |   |   |   |
-   3|   |   |   |   |   |   |   |   |   |   |
-   4|   |   |   |   |   |   |   |   |   |   |
-   5|   |   |   |   |   |   |   |   |   |   |
-   6|   |   |   |   |   |   |   |   |   |   |
-   7|   |   |   |   |   |   |   |   |   |   |
-   8|   |   |   |   |   |   |   |   |   |   |
-   9|   |   |   |   |   |   |   |   |   |   |";
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.Append(GenerateOceanGridHeader());
+
+        for (int row = 0; row < _rowNumber; row++)
+        {
+            stringBuilder.AppendLine();
+            stringBuilder.Append(GenerateOceanGridRow(ships, row));
+        }
+
+        var result = stringBuilder.ToString();
+
+        return result;
     }
 
-    private string GenerateceanGridHeader()
+    private string GenerateOceanGridHeader()
     {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.Append($"    |");
@@ -71,6 +79,19 @@ public class OceanGridGenerator : IOceanGridGenerator
 
         return stringBuilder.ToString();
     }
+    private string GenerateOceanGridRow(List<Shoot> shoots, int row)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.Append($"   {row}|");
+
+        for (int col = 0; col < _columnNumber; col++)
+        {
+            string cellRepresentation = GetCellRepresentation(shoots, new Coordinate(row, col));
+            stringBuilder.Append($" {cellRepresentation} |");
+        }
+
+        return stringBuilder.ToString();
+    }
 
     private string GetCellRepresentation(List<Ship> ships, Coordinate coordinate)
     {
@@ -79,6 +100,17 @@ public class OceanGridGenerator : IOceanGridGenerator
         if (match != null)
         {
             return match.Representation;
+        }
+
+        return " ";
+    }
+    private string GetCellRepresentation(List<Shoot> shoots, Coordinate coordinate)
+    {
+        var match = shoots.SingleOrDefault(x => x.Coordinate.Equals(coordinate));
+
+        if (match != null)
+        {
+            return _shootDamageRepresentationMap[match.ShootDamage];
         }
 
         return " ";
