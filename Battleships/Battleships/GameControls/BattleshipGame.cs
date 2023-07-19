@@ -66,7 +66,7 @@ public class BattleshipGame
     private void PrintTargetOcean(PlayerId playerId)
     {
         _printer.WriteLine(@"- Target ocean grid:");
-        var targetGrid = _oceanGridGenerator.GenerateTargetOceanGrid(new List<Shoot>());
+        var targetGrid = _oceanGridGenerator.GenerateTargetOceanGrid(Players[playerId].Shoots);
         _printer.WriteLine(targetGrid);
     }
 
