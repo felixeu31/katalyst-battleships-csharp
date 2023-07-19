@@ -8,6 +8,6 @@ public class Gunship : Ship
     {
         
     }
-    public override string Representation => "g";
+
     public override ShipType ShipType => ShipType.Gunship;
 }

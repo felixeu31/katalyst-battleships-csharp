@@ -15,6 +15,12 @@ public class OceanGridGenerator : IOceanGridGenerator
         { ShootDamage.Hit , "x"},
         { ShootDamage.Sunk , "X"}
     };
+    private readonly Dictionary<ShipType, string> _shipRepresentationMap = new()
+    {
+        { ShipType.Gunship , "g"},
+        { ShipType.Destroyer , "d"},
+        { ShipType.Carrier , "c"}
+    };
 
     public OceanGridGenerator(int rowNumber = 10, int columnNumber = 10)
     {
@@ -99,7 +105,7 @@ public class OceanGridGenerator : IOceanGridGenerator
 
         if (match != null)
         {
-            return match.Representation;
+            return _shipRepresentationMap[match.ShipType];
         }
 
         return " ";
@@ -110,9 +116,26 @@ public class OceanGridGenerator : IOceanGridGenerator
 
         if (match != null)
         {
+            if (match.ShootDamage.Equals(ShootDamage.Sunk) || BelongsToSunkShip(match, shoots, coordinate))
+            {
+                return _shootDamageRepresentationMap[ShootDamage.Sunk];
+            }
+
             return _shootDamageRepresentationMap[match.ShootDamage];
         }
 
         return " ";
+    }
+
+    private static bool BelongsToSunkShip(Shoot shoot, List<Shoot> shoots, Coordinate coordinate)
+    {
+        if (shoot.ShootDamage == ShootDamage.Sunk)
+        {
+            return true;
+        }
+
+        
+
+        return false;
     }
 }

@@ -9,7 +9,6 @@ public abstract class Ship
 
     public Coordinate[] Coordinates => _coordinates;
     public List<Coordinate> HitCoordinates { get; set; } = new List<Coordinate>();
-    public abstract string Representation { get; }
     public abstract ShipType ShipType { get; }
 
     public Ship(params Coordinate[] coordinates)
