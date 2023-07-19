@@ -10,6 +10,8 @@ Hit
 Player1 invoked: fire
 Hit
 Player1 invoked: fire
+Destroyer sunk!
+Player1 invoked: fire
 Gunship sunk!
 Player1 invoked: fire
 Hit
@@ -31,7 +33,7 @@ Player1 invoked: print
    0|   |   |   |   |   |   |   |   |   |   |
    1|   |   |   |   |   |   |   |   |   |   |
    2|   |   |   |   |   |   |   |   |   |   |
-   3| o |   | x | x |   |   |   |   |   |   |
+   3| o |   | X | X | X |   |   |   |   |   |
    4|   |   |   |   |   |   |   |   | x |   |
    5|   |   |   |   |   |   |   |   |   |   |
    6|   |   |   |   |   |   |   |   |   |   |

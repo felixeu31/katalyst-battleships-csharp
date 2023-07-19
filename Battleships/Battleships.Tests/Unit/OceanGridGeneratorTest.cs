@@ -9,7 +9,7 @@ namespace Battleships.Tests.Unit;
 public class OceanGridGeneratorTest
 {
     [Fact]
-    public void should_generate_gun_ship()
+    public void should_generate_ocean_grid_with_gun_ship()
     {
         // Arrange
         var ships = new List<Ship>
@@ -36,7 +36,7 @@ public class OceanGridGeneratorTest
     }
 
     [Fact]
-    public void should_generate_destroyer()
+    public void should_generate_ocean_grid_with_destroyer()
     {
         // Arrange
         var ships = new List<Ship>
@@ -64,7 +64,7 @@ public class OceanGridGeneratorTest
 
 
     [Fact]
-    public void should_generate_carrier()
+    public void should_generate_ocean_grid_with_carrier()
     {
         // Arrange
         var ships = new List<Ship>
@@ -91,7 +91,7 @@ public class OceanGridGeneratorTest
     }
     
     [Fact]
-    public void should_generate_empty_target_ocean()
+    public void should_generate_target_ocean_empty()
     {
         // Arrange
 
