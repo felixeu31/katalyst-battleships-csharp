@@ -158,7 +158,7 @@ public class BattleshipGameTest
 
         // Arrange
         var shoot = game.Players[PlayerId.Player1].Shoots[0];
-        shoot.Should().Be(Shoot.Water(new Coordinate(3, 0)));
+        shoot.Should().Be(Shoot.Miss(new Coordinate(3, 0)));
         shoot.Announce.Should().Be("Miss");
     }
 

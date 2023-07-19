@@ -7,7 +7,7 @@ public abstract record Shoot(Coordinate Coordinate, ShootDamage ShootDamage, Shi
 {
     public abstract string Announce { get; }
 
-    public static Shoot Water(Coordinate coordinate)
+    public static Shoot Miss(Coordinate coordinate)
     {
         return new WaterShoot(coordinate);
     }

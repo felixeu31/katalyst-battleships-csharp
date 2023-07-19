@@ -25,7 +25,7 @@ public class Player
             return ship.ShootAt(coordinate);
         }
 
-        return Shoot.Water(coordinate);
+        return Shoot.Miss(coordinate);
     }
 
     public void AddShoot(Shoot shoot)

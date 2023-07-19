@@ -112,4 +112,31 @@ public class OceanGridGeneratorTest
    8|   |   |   |   |   |   |   |   |   |   |
    9|   |   |   |   |   |   |   |   |   |   |");
     }
+
+    [Fact]
+    public void should_generate_target_ocean_with_miss_shoot()
+    {
+        // Arrange
+
+        // Act
+        OceanGridGenerator oceanGridGenerator = new OceanGridGenerator(10, 10);
+        var shoots = new List<Shoot>()
+        {
+            Shoot.Miss(new Coordinate(0, 0))
+        };
+        var result = oceanGridGenerator.GenerateTargetOceanGrid(shoots);
+
+        // Assert
+        result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+   0| o |   |   |   |   |   |   |   |   |   |
+   1|   |   |   |   |   |   |   |   |   |   |
+   2|   |   |   |   |   |   |   |   |   |   |
+   3|   |   |   |   |   |   |   |   |   |   |
+   4|   |   |   |   |   |   |   |   |   |   |
+   5|   |   |   |   |   |   |   |   |   |   |
+   6|   |   |   |   |   |   |   |   |   |   |
+   7|   |   |   |   |   |   |   |   |   |   |
+   8|   |   |   |   |   |   |   |   |   |   |
+   9|   |   |   |   |   |   |   |   |   |   |");
+    }
 }
