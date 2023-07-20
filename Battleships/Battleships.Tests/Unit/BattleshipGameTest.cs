@@ -189,7 +189,7 @@ public class BattleshipGameTest
 
         // Arrange
         var shoot = game.Players[PlayerId.Player1].Shoots[0];
-        shoot.Should().Be(Shoot.Hit(new Coordinate(3, 2)));
+        shoot.Should().BeEquivalentTo(Shoot.Hit(new Coordinate(3, 2)));
         shoot.Announce.Should().Be("Hit");
     }
 
@@ -219,7 +219,7 @@ public class BattleshipGameTest
 
         // Arrange
         var shoot = game.Players[PlayerId.Player1].Shoots[0];
-        shoot.Should().Be(Shoot.Sunk(new Coordinate(2, 7), ShipType.Gunship));
+        shoot.Should().BeEquivalentTo(Shoot.Sunk(new Coordinate(2, 7), ShipType.Gunship, new []{ new Coordinate(2, 7) }));
         shoot.Announce.Should().Be("Gunship sunk!");
     }
     [Fact]
@@ -250,7 +250,10 @@ public class BattleshipGameTest
 
         // Arrange
         var shoot = game.Players[PlayerId.Player1].Shoots[2];
-        shoot.Should().Be(Shoot.Sunk(new Coordinate(3, 4), ShipType.Destroyer));
+        shoot.Coordinate.Should().Be(new Coordinate(3, 4));
+        shoot.ShipType.Should().Be(ShipType.Destroyer);
+        shoot.ShootDamage.Should().Be(ShootDamage.Sunk);
+        shoot.ShipCoordinates.Should().BeEquivalentTo(new[] { new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4) });
         shoot.Announce.Should().Be("Destroyer sunk!");
     }
 

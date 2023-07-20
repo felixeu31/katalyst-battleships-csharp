@@ -129,13 +129,9 @@ public class OceanGridGenerator : IOceanGridGenerator
 
     private static bool BelongsToSunkShip(Shoot shoot, List<Shoot> shoots, Coordinate coordinate)
     {
-        if (shoot.ShootDamage == ShootDamage.Sunk)
-        {
-            return true;
-        }
-
-        
-
-        return false;
+        return shoots.Any(x =>
+            x.ShootDamage == ShootDamage.Sunk 
+            && x.ShipCoordinates != null &&
+            x.ShipCoordinates.Contains(shoot.Coordinate));
     }
 }

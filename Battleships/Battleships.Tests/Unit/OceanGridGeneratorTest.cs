@@ -177,7 +177,7 @@ public class OceanGridGeneratorTest
         OceanGridGenerator oceanGridGenerator = new OceanGridGenerator(10, 10);
         var shoots = new List<Shoot>()
         {
-            Shoot.Sunk(new Coordinate(0, 0), ShipType.Gunship)
+            Shoot.Sunk(new Coordinate(0, 0), ShipType.Gunship, new []{new Coordinate(0, 0)})
         };
         var result = oceanGridGenerator.GenerateTargetOceanGrid(shoots);
 
@@ -207,7 +207,12 @@ public class OceanGridGeneratorTest
         {
             Shoot.Hit(new Coordinate(0, 0)),
             Shoot.Hit(new Coordinate(1, 0)),
-            Shoot.Sunk(new Coordinate(2, 0), ShipType.Gunship)
+            Shoot.Sunk(new Coordinate(2, 0), ShipType.Gunship, new []
+            {
+                new Coordinate(0, 0),
+                new Coordinate(1, 0),
+                new Coordinate(2, 0),
+            })
         };
         var result = oceanGridGenerator.GenerateTargetOceanGrid(shoots);
 

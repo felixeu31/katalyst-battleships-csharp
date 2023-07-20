@@ -24,7 +24,7 @@ public abstract class Ship
 
         if (IsSunk)
         {
-            return Shoot.Sunk(coordinate, ShipType);
+            return Shoot.Sunk(coordinate, ShipType, _coordinates);
         }
 
         return Shoot.Hit(coordinate);

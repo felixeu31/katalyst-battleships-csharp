@@ -3,7 +3,7 @@ using Battleships.Ships;
 
 namespace Battleships.Shoots;
 
-public abstract record Shoot(Coordinate Coordinate, ShootDamage ShootDamage, ShipType? ShipType = null)
+public abstract record Shoot(Coordinate Coordinate, ShootDamage ShootDamage, ShipType? ShipType = null, Coordinate[]? ShipCoordinates = null)
 {
     public abstract string Announce { get; }
 
@@ -17,8 +17,8 @@ public abstract record Shoot(Coordinate Coordinate, ShootDamage ShootDamage, Shi
         return new HitShoot(coordinate);
     }
 
-    public static Shoot Sunk(Coordinate coordinate, ShipType shipType)
+    public static Shoot Sunk(Coordinate coordinate, ShipType shipType, Coordinate[] shipCoordinates)
     {
-        return new SunkShoot(coordinate, shipType);
+        return new SunkShoot(coordinate, shipType, shipCoordinates);
     }
 }
