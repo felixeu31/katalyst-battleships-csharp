@@ -5,7 +5,7 @@ using Battleships.Shoots;
 
 namespace Battleships.Printers;
 
-public class OceanGridGenerator : IOceanGridGenerator
+public class OceanGridGenerator : IOceanGridGenerator //todo ¿? extract base class or separate in two classes
 {
     private readonly int _rowNumber;
     private readonly int _columnNumber;

@@ -1,0 +1,86 @@
+﻿Welcome to Battleship game!
+Player1 added to the game
+Player2 added to the game
+Player1 invoked: start
+Game started! Player1 starts moving
+Player1 invoked: fire
+Miss
+Player1 invoked: end turn
+Player1 finished its turn, it is turn for Player2 to move
+Player2 invoked: fire
+Miss
+Player2 invoked: end turn
+Player2 finished its turn, it is turn for Player1 to move
+Player1 invoked: fire
+Miss
+Player1 invoked: end turn
+Player1 finished its turn, it is turn for Player2 to move
+Player2 invoked: fire
+Miss
+Player2 invoked: end turn
+Player2 finished its turn, it is turn for Player1 to move
+Player1 invoked: fire
+Gunship sunk!
+Player1 invoked: end turn
+Player1 finished its turn, it is turn for Player2 to move
+Player2 invoked: fire
+Gunship sunk!
+Player2 invoked: end turn
+Player2 finished its turn, it is turn for Player1 to move
+Player1 invoked: fire
+Hit
+Player1 invoked: end turn
+Player1 finished its turn, it is turn for Player2 to move
+Player2 invoked: fire
+Hit
+Player2 invoked: end turn
+Player2 finished its turn, it is turn for Player1 to move
+Player1 invoked: fire
+Hit
+Player1 invoked: end turn
+Player1 finished its turn, it is turn for Player2 to move
+Player2 invoked: fire
+Hit
+Player2 invoked: end turn
+Player2 finished its turn, it is turn for Player1 to move
+Player1 invoked: fire
+Destroyer sunk!
+Player1 invoked: end turn
+Player1 finished its turn, it is turn for Player2 to move
+Game finished! Player1 won!!
+# Player1 battle report
+Total shots: 6
+Misses: 2
+Hits: 4
+Ships Sunk: [ 
+	Gunship: (2,7),
+	Destroyer: (9,9)
+]
+    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+   0|   |   |   |   |   |   |   |   |   |   |
+   1|   |   |   |   |   |   |   |   |   |   |
+   2|   |   |   |   |   |   | o | X |   |   |
+   3| o |   | X | X | X |   |   |   |   |   |
+   4|   |   |   |   |   |   |   |   |   |   |
+   5|   |   |   |   |   |   |   |   |   |   |
+   6|   |   |   |   |   |   |   |   |   |   |
+   7|   |   |   |   |   |   |   |   |   |   |
+   8|   |   |   |   |   |   |   |   |   |   |
+   9|   |   |   |   |   |   |   |   |   |   |
+# Player2 battle report
+Total shots: 5
+Misses: 3
+Hits: 2
+Ships Sunk: [ 
+]
+    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+   0|   |   |   |   |   |   |   |   |   |   |
+   1|   |   |   |   |   |   |   |   |   |   |
+   2|   |   |   |   |   |   | o | g | o |   |
+   3| o |   | x | x | c |   |   |   |   |   |
+   4|   |   |   |   |   |   |   |   |   |   |
+   5|   |   |   |   |   |   |   |   |   |   |
+   6|   |   |   |   |   |   |   |   |   |   |
+   7|   |   |   |   |   |   |   |   |   |   |
+   8|   |   |   |   |   |   |   |   |   |   |
+   9|   |   |   |   |   |   |   |   |   |   |

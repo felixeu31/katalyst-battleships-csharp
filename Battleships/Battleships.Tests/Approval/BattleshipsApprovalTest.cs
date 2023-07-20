@@ -89,4 +89,59 @@ public class BattleshipsApprovalTest
 
         return Verify(output);
     }
+
+    [Fact]
+    public Task game_finished_when_player_sunk_all_opponent_ships()
+    {
+        // Arrange
+        StringBuilder fakeoutput = new StringBuilder();
+        Console.SetOut(new StringWriter(fakeoutput));
+        Console.SetIn(new StringReader("a\n"));
+
+        // Act
+        IPrinter printer = new ConsolePrinter();
+        IOceanGridGenerator oceanGridGenerator = new OceanGridGenerator();
+        BattleshipGame game = new BattleshipGame(printer, oceanGridGenerator);
+        game.AddPlayer(PlayerId.Player1, new List<Ship>
+        {
+            ShipFactory.Build(new Coordinate(2, 7) ),
+            ShipFactory.Build(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
+        });
+        game.AddPlayer(PlayerId.Player2, new List<Ship>
+        {
+            ShipFactory.Build(new Coordinate(2, 7) ),
+            ShipFactory.Build(new Coordinate(3, 2), new Coordinate(3, 3), new Coordinate(3, 4)),
+        });
+        game.StartGame(PlayerId.Player1);
+
+        game.Fire(PlayerId.Player1, new Coordinate(2, 6)); //Miss
+        game.EndTurn(PlayerId.Player1);
+        game.Fire(PlayerId.Player2, new Coordinate(2, 6)); //Miss
+        game.EndTurn(PlayerId.Player2);
+        game.Fire(PlayerId.Player1, new Coordinate(3, 0)); //Miss
+        game.EndTurn(PlayerId.Player1);
+        game.Fire(PlayerId.Player2, new Coordinate(3, 0)); //Miss
+        game.EndTurn(PlayerId.Player2);
+
+        game.Fire(PlayerId.Player1, new Coordinate(2, 7)); //Hit
+        game.EndTurn(PlayerId.Player1);
+        game.Fire(PlayerId.Player2, new Coordinate(2, 8)); //Hit
+        game.EndTurn(PlayerId.Player2);
+
+        game.Fire(PlayerId.Player1, new Coordinate(3, 2)); //Hit
+        game.EndTurn(PlayerId.Player1);
+        game.Fire(PlayerId.Player2, new Coordinate(3, 2)); //Hit
+        game.EndTurn(PlayerId.Player2);
+        game.Fire(PlayerId.Player1, new Coordinate(3, 3)); //Hit
+        game.EndTurn(PlayerId.Player1);
+        game.Fire(PlayerId.Player2, new Coordinate(3, 3)); //Hit
+        game.EndTurn(PlayerId.Player2);
+        game.Fire(PlayerId.Player1, new Coordinate(3, 4)); //Hit
+        game.EndTurn(PlayerId.Player1);
+
+        // Assert
+        var output = fakeoutput.ToString();
+
+        return Verify(output);
+    }
 }
