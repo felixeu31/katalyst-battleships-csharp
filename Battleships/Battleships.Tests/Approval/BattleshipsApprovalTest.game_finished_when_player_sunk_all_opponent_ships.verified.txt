@@ -51,9 +51,9 @@ Game finished! Player1 won!!
 Total shots: 6
 Misses: 2
 Hits: 4
-Ships Sunk: [ 
+Ships Sunk: [
 	Gunship: (2,7),
-	Destroyer: (9,9)
+	Destroyer: (3,2)
 ]
     | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    0|   |   |   |   |   |   |   |   |   |   |
@@ -70,13 +70,13 @@ Ships Sunk: [
 Total shots: 5
 Misses: 3
 Hits: 2
-Ships Sunk: [ 
+Ships Sunk: [
 ]
     | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
    0|   |   |   |   |   |   |   |   |   |   |
    1|   |   |   |   |   |   |   |   |   |   |
    2|   |   |   |   |   |   | o | g | o |   |
-   3| o |   | x | x | c |   |   |   |   |   |
+   3| o |   | x | x | d |   |   |   |   |   |
    4|   |   |   |   |   |   |   |   |   |   |
    5|   |   |   |   |   |   |   |   |   |   |
    6|   |   |   |   |   |   |   |   |   |   |

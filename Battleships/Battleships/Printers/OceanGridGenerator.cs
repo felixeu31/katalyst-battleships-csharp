@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 using Battleships.GameControls;
 using Battleships.Ships;
 using Battleships.Shoots;
@@ -63,8 +64,48 @@ public class OceanGridGenerator : IOceanGridGenerator //todo ¿? extract base cl
 
     public string GetBattleReport(PlayerId player, List<Shoot> shoots, List<Ship> opponentShips)
     {
-        throw new NotImplementedException();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.AppendLine($"# {player} battle report");
+        stringBuilder.AppendLine($"Total shots: {shoots.Count}");
+        stringBuilder.AppendLine($"Misses: {shoots.Count(x => x.ShootDamage == ShootDamage.Water)}");
+        stringBuilder.AppendLine($"Hits: {shoots.Count(x => x.ShootDamage != ShootDamage.Water)}");
+
+        stringBuilder.AppendLine(GetShunkshipsRepresentation(opponentShips));
+
+        stringBuilder.Append(GenerateOceanGridHeader());
+        for (int row = 0; row < _rowNumber; row++)
+        {
+            stringBuilder.AppendLine();
+            stringBuilder.Append(GenerateOceanGridRow(shoots, opponentShips, row));
+        }
+
+        var result = stringBuilder.ToString();
+
+        return result;
     }
+
+    private string GetShunkshipsRepresentation(List<Ship> opponentShips)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.AppendLine("Ships Sunk: [");
+
+        var sunkShips = opponentShips.Where(x => x.IsSunk).ToList();
+        foreach (var sunkShip in sunkShips)
+        {
+            stringBuilder.AppendLine(
+                $"\t{sunkShip.ShipType}: ({sunkShip.Coordinates[0].XPosition},{sunkShip.Coordinates[0].YPosition}){(sunkShips.Last() == sunkShip ? "" : ",")}");
+            
+        }
+
+        stringBuilder.Append("]");
+
+        var result = stringBuilder.ToString();
+
+        return result;
+    }
+
 
     private string GenerateOceanGridHeader()
     {
@@ -103,6 +144,19 @@ public class OceanGridGenerator : IOceanGridGenerator //todo ¿? extract base cl
 
         return stringBuilder.ToString();
     }
+    private string GenerateOceanGridRow(List<Shoot> shoots, List<Ship> opponentShips, int row)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.Append($"   {row}|");
+
+        for (int col = 0; col < _columnNumber; col++)
+        {
+            string cellRepresentation = GetCellRepresentation(shoots, opponentShips, new Coordinate(row, col));
+            stringBuilder.Append($" {cellRepresentation} |");
+        }
+
+        return stringBuilder.ToString();
+    }
 
     private string GetCellRepresentation(List<Ship> ships, Coordinate coordinate)
     {
@@ -127,6 +181,31 @@ public class OceanGridGenerator : IOceanGridGenerator //todo ¿? extract base cl
             }
 
             return _shootDamageRepresentationMap[match.ShootDamage];
+        }
+
+        return " ";
+    }
+
+
+    private string GetCellRepresentation(List<Shoot> shoots, List<Ship> opponentShips, Coordinate coordinate)
+    {
+        var shootMatch = shoots.SingleOrDefault(x => x.Coordinate.Equals(coordinate));
+
+        if (shootMatch != null)
+        {
+            if (shootMatch.ShootDamage.Equals(ShootDamage.Sunk) || BelongsToSunkShip(shootMatch, shoots, coordinate))
+            {
+                return _shootDamageRepresentationMap[ShootDamage.Sunk];
+            }
+
+            return _shootDamageRepresentationMap[shootMatch.ShootDamage];
+        }
+
+        var shipMatch = opponentShips.SingleOrDefault(x => x.Coordinates.Contains(coordinate));
+
+        if (shipMatch != null)
+        {
+            return _shipRepresentationMap[shipMatch.ShipType];
         }
 
         return " ";
