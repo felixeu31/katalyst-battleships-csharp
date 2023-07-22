@@ -4,6 +4,7 @@ using Battleships.Ships;
 using Battleships.Shoots;
 using FluentAssertions;
 using Moq;
+using Newtonsoft.Json.Bson;
 
 namespace Battleships.Tests.Unit;
 
@@ -122,8 +123,12 @@ public class BattleshipGameTest
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
         // act
-        game.AddPlayer(PlayerId.Player1, new List<Ship>());
-        game.AddPlayer(PlayerId.Player2, new List<Ship>());
+        game.AddPlayer(PlayerId.Player1, new List<Ship>(){
+            ShipFactory.Build(new Coordinate(2, 7)),});
+        game.AddPlayer(PlayerId.Player2, new List<Ship>()
+        {
+            ShipFactory.Build(new Coordinate(2, 7)),
+        });
         game.StartGame(PlayerId.Player1);
         game.EndTurn(PlayerId.Player1);
 
@@ -287,4 +292,74 @@ public class BattleshipGameTest
         // Arrange
         oceanPrinterMock.Verify(x => x.GenerateTargetOceanGrid(It.Is<List<Shoot>>(list => list.Count == 3)), Times.Once);
     }
+
+    [Fact]
+    public void should_announce_winner_when_player_sunk_all_opponent_ships()
+    {
+        // arrange
+        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
+        BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
+
+        // act
+        var ships = new List<Ship>()
+        {
+            ShipFactory.Build(new Coordinate(2, 7)),
+        };
+        game.AddPlayer(PlayerId.Player1, new List<Ship>()
+        {
+
+            ShipFactory.Build(new Coordinate(2, 7)),
+        });
+        game.AddPlayer(PlayerId.Player2, ships);
+        game.StartGame(PlayerId.Player1);
+        game.Fire(PlayerId.Player1, new Coordinate(2, 7));
+        game.EndTurn(PlayerId.Player1);
+
+        // Arrange
+        printerMock.Verify(x => x.WriteLine($"Game finished! {PlayerId.Player1} won!!"), Times.Once);
+    }
+
+    [Fact]
+    public void should_print_battle_reports_when_game_is_finished()
+    {
+        // arrange
+        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
+        oceanPrinterMock.Setup(x => x.GetBattleReport(PlayerId.Player1,
+            It.Is<List<Shoot>>(match => match.Count == 1),
+            It.Is<List<Ship>>(match => match.Count == 1))).Returns("Report 1");
+        oceanPrinterMock.Setup(x => x.GetBattleReport(PlayerId.Player2,
+            It.Is<List<Shoot>>(match => match.Count == 0),
+            It.Is<List<Ship>>(match => match.Count == 2))).Returns("Report 2");
+        BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
+
+        // act
+        game.AddPlayer(PlayerId.Player1, new List<Ship>()
+        {
+
+            ShipFactory.Build(new Coordinate(2, 7)),
+            ShipFactory.Build(new Coordinate(2, 7)),
+        });
+        game.AddPlayer(PlayerId.Player2, new List<Ship>()
+        {
+            ShipFactory.Build(new Coordinate(2, 7)),
+        });
+        game.StartGame(PlayerId.Player1);
+        game.Fire(PlayerId.Player1, new Coordinate(2, 7));
+        game.EndTurn(PlayerId.Player1);
+
+        // Arrange
+        oceanPrinterMock.Verify(x => x.GetBattleReport(PlayerId.Player1, 
+            It.Is<List<Shoot>>(match => match.Count == 1),
+            It.Is<List<Ship>>(match => match.Count == 1)), Times.Once);
+
+        oceanPrinterMock.Verify(x => x.GetBattleReport(PlayerId.Player2,
+            It.Is<List<Shoot>>(match => match.Count == 0),
+            It.Is<List<Ship>>(match => match.Count == 2)), Times.Once);
+
+        printerMock.Verify(x => x.WriteLine("Report 1"), Times.Once);
+        printerMock.Verify(x => x.WriteLine("Report 2"), Times.Once);
+    }
+
 }

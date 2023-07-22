@@ -61,6 +61,11 @@ public class OceanGridGenerator : IOceanGridGenerator //todo ¿? extract base cl
         return result;
     }
 
+    public string GetBattleReport(PlayerId player, List<Shoot> shoots, List<Ship> opponentShips)
+    {
+        throw new NotImplementedException();
+    }
+
     private string GenerateOceanGridHeader()
     {
         StringBuilder stringBuilder = new StringBuilder();

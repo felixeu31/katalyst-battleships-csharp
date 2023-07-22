@@ -24,7 +24,7 @@ Gunship sunk!
 Player1 invoked: end turn
 Player1 finished its turn, it is turn for Player2 to move
 Player2 invoked: fire
-Gunship sunk!
+Miss
 Player2 invoked: end turn
 Player2 finished its turn, it is turn for Player1 to move
 Player1 invoked: fire
@@ -46,7 +46,6 @@ Player2 finished its turn, it is turn for Player1 to move
 Player1 invoked: fire
 Destroyer sunk!
 Player1 invoked: end turn
-Player1 finished its turn, it is turn for Player2 to move
 Game finished! Player1 won!!
 # Player1 battle report
 Total shots: 6

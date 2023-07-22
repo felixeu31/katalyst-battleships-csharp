@@ -36,8 +36,25 @@ public class BattleshipGame
     public void EndTurn(PlayerId playerId)
     {
         PrintPlayerAction(playerId, "end turn");
-        _printer.WriteLine($"{playerId.ToString()} finished its turn, it is turn for {GetOpponent(playerId).ToString()} to move");
+
+        if (this.IsFinished)
+        {
+            _printer.WriteLine($"Game finished! {this.Winner} won!!");
+            var battleReport1 = _oceanGridGenerator.GetBattleReport(PlayerId.Player1, Players[PlayerId.Player1].Shoots,
+                Players[GetOpponent(PlayerId.Player1)].Ships);
+            var battleReport2 = _oceanGridGenerator.GetBattleReport(PlayerId.Player2, Players[PlayerId.Player2].Shoots,
+                Players[GetOpponent(PlayerId.Player2)].Ships);
+            _printer.WriteLine(battleReport1);
+            _printer.WriteLine(battleReport2);
+        }
+        else
+        {
+            _printer.WriteLine($"{playerId.ToString()} finished its turn, it is turn for {GetOpponent(playerId).ToString()} to move");
+        }
     }
+
+    public bool IsFinished => Players.Any(x => x.Value.Ships.All(s => s.IsSunk));
+    public PlayerId? Winner => IsFinished ? GetOpponent(Players.Single(x => x.Value.Ships.All(s => s.IsSunk)).Key) : null;
 
     private PlayerId GetOpponent(PlayerId playerId)
     {
