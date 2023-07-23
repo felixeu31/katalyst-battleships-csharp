@@ -28,7 +28,7 @@ public class OceanGridGenerator : IOceanGridGenerator //todo ¿? extract base cl
         _rowNumber = rowNumber;
         _columnNumber = columnNumber;
     }
-    public string GeneratePlayersOceanGrid(List<Ship> ships)
+    public string GetPlayersOceanGrid(List<Ship> ships)
     {
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -45,7 +45,7 @@ public class OceanGridGenerator : IOceanGridGenerator //todo ¿? extract base cl
         return result;
     }
 
-    public string GenerateTargetOceanGrid(List<Shoot> ships)
+    public string GetTargetOceanGrid(List<Shoot> ships)
     {
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -62,7 +62,7 @@ public class OceanGridGenerator : IOceanGridGenerator //todo ¿? extract base cl
         return result;
     }
 
-    public string GetBattleReport(PlayerId player, List<Shoot> shoots, List<Ship> opponentShips)
+    public string GetPlayerBattleReport(PlayerId player, List<Shoot> shoots, List<Ship> opponentShips)
     {
         StringBuilder stringBuilder = new StringBuilder();
 

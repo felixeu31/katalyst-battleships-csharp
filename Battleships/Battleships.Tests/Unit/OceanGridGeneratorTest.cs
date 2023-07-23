@@ -19,7 +19,7 @@ public class OceanGridGeneratorTest
 
         // Act
         OceanGridGenerator oceanGridGenerator = new OceanGridGenerator(10, 10);
-        var result = oceanGridGenerator.GeneratePlayersOceanGrid(ships);
+        var result = oceanGridGenerator.GetPlayersOceanGrid(ships);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -46,7 +46,7 @@ public class OceanGridGeneratorTest
 
         // Act
         OceanGridGenerator oceanGridGenerator = new OceanGridGenerator(10, 10);
-        var result = oceanGridGenerator.GeneratePlayersOceanGrid(ships);
+        var result = oceanGridGenerator.GetPlayersOceanGrid(ships);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -74,7 +74,7 @@ public class OceanGridGeneratorTest
 
         // Act
         OceanGridGenerator oceanGridGenerator = new OceanGridGenerator(10, 10);
-        var result = oceanGridGenerator.GeneratePlayersOceanGrid(ships);
+        var result = oceanGridGenerator.GetPlayersOceanGrid(ships);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -97,7 +97,7 @@ public class OceanGridGeneratorTest
 
         // Act
         OceanGridGenerator oceanGridGenerator = new OceanGridGenerator(10, 10);
-        var result = oceanGridGenerator.GenerateTargetOceanGrid(new List<Shoot>());
+        var result = oceanGridGenerator.GetTargetOceanGrid(new List<Shoot>());
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -124,7 +124,7 @@ public class OceanGridGeneratorTest
         {
             Shoot.Miss(new Coordinate(0, 0))
         };
-        var result = oceanGridGenerator.GenerateTargetOceanGrid(shoots);
+        var result = oceanGridGenerator.GetTargetOceanGrid(shoots);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -152,7 +152,7 @@ public class OceanGridGeneratorTest
         {
             Shoot.Hit(new Coordinate(0, 0))
         };
-        var result = oceanGridGenerator.GenerateTargetOceanGrid(shoots);
+        var result = oceanGridGenerator.GetTargetOceanGrid(shoots);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -179,7 +179,7 @@ public class OceanGridGeneratorTest
         {
             Shoot.Sunk(new Coordinate(0, 0), ShipType.Gunship, new []{new Coordinate(0, 0)})
         };
-        var result = oceanGridGenerator.GenerateTargetOceanGrid(shoots);
+        var result = oceanGridGenerator.GetTargetOceanGrid(shoots);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -214,7 +214,7 @@ public class OceanGridGeneratorTest
                 new Coordinate(2, 0),
             })
         };
-        var result = oceanGridGenerator.GenerateTargetOceanGrid(shoots);
+        var result = oceanGridGenerator.GetTargetOceanGrid(shoots);
 
         // Assert
         result.Should().Be(@"    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
@@ -258,7 +258,7 @@ public class OceanGridGeneratorTest
         };
 
         // Act
-        var result = oceanGridGenerator.GetBattleReport(PlayerId.Player1, shoots, ships);
+        var result = oceanGridGenerator.GetPlayerBattleReport(PlayerId.Player1, shoots, ships);
 
         // Assert
         result.Should().Be(@"# Player1 battle report

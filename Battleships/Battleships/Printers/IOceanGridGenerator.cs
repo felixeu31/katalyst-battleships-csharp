@@ -6,7 +6,7 @@ namespace Battleships.Printers;
 
 public interface IOceanGridGenerator
 {
-    string GeneratePlayersOceanGrid(List<Ship> ships);
-    string GenerateTargetOceanGrid(List<Shoot> ships);
-    string GetBattleReport(PlayerId player, List<Shoot> shoots, List<Ship> opponentShips);
+    string GetPlayersOceanGrid(List<Ship> ships);
+    string GetTargetOceanGrid(List<Shoot> ships);
+    string GetPlayerBattleReport(PlayerId player, List<Shoot> shoots, List<Ship> opponentShips);
 }

@@ -1,6 +1,6 @@
 namespace Battleships.Printers;
 
-public class ConsolePrinter : IPrinter
+public class ConsoleDisplay : IDisplay
 {
     public void WriteLine(string value)
     {

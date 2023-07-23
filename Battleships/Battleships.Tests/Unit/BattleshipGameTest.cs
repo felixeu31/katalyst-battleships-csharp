@@ -14,7 +14,7 @@ public class BattleshipGameTest
     public void new_game_should_print_greeting()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
 
         // act
@@ -28,7 +28,7 @@ public class BattleshipGameTest
     public void should_add_player_with_ships()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
@@ -48,7 +48,7 @@ public class BattleshipGameTest
     public void should_add_second_player()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
@@ -67,7 +67,7 @@ public class BattleshipGameTest
     public void should_inform_users_when_game_starts()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
@@ -85,7 +85,7 @@ public class BattleshipGameTest
     public void should_print_player_game()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
@@ -103,22 +103,22 @@ public class BattleshipGameTest
         game.AddPlayer(PlayerId.Player1, ships);
         game.AddPlayer(PlayerId.Player2, new List<Ship>());
         game.StartGame(PlayerId.Player1);
-        game.PrintPlayerGameGrids(PlayerId.Player1);
+        game.DisplayPlayerGameGrids(PlayerId.Player1);
 
         // Arrange
         printerMock.Verify(x => x.WriteLine("Player1 invoked: print"));
         printerMock.Verify(x => x.WriteLine(@"- My ocean grid:"));
-        oceanPrinterMock.Verify(x => x.GeneratePlayersOceanGrid(ships));
+        oceanPrinterMock.Verify(x => x.GetPlayersOceanGrid(ships));
 
         printerMock.Verify(x => x.WriteLine(@"- Target ocean grid:"));
-        oceanPrinterMock.Verify(x => x.GenerateTargetOceanGrid(new List<Shoot>()));
+        oceanPrinterMock.Verify(x => x.GetTargetOceanGrid(new List<Shoot>()));
     }
 
     [Fact]
     public void should_inform_users_when_user_ends()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
@@ -141,7 +141,7 @@ public class BattleshipGameTest
     public void should_register_player_water_shoot()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
@@ -172,7 +172,7 @@ public class BattleshipGameTest
     public void should_register_player_hit_shoot()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
@@ -202,7 +202,7 @@ public class BattleshipGameTest
     public void should_register_player_gunship_sunk_shoot()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
@@ -231,7 +231,7 @@ public class BattleshipGameTest
     public void should_register_player_destroyer_sunk_shoot()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
@@ -266,7 +266,7 @@ public class BattleshipGameTest
     public void should_print_target_ocean_with_shoots()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
@@ -287,17 +287,17 @@ public class BattleshipGameTest
         game.Fire(PlayerId.Player1, new Coordinate(3, 2));
         game.Fire(PlayerId.Player1, new Coordinate(3, 3));
         game.Fire(PlayerId.Player1, new Coordinate(3, 4));
-        game.PrintPlayerGameGrids(PlayerId.Player1);
+        game.DisplayPlayerGameGrids(PlayerId.Player1);
 
         // Arrange
-        oceanPrinterMock.Verify(x => x.GenerateTargetOceanGrid(It.Is<List<Shoot>>(list => list.Count == 3)), Times.Once);
+        oceanPrinterMock.Verify(x => x.GetTargetOceanGrid(It.Is<List<Shoot>>(list => list.Count == 3)), Times.Once);
     }
 
     [Fact]
     public void should_announce_winner_when_player_sunk_all_opponent_ships()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
 
@@ -324,12 +324,12 @@ public class BattleshipGameTest
     public void should_print_battle_reports_when_game_is_finished()
     {
         // arrange
-        Mock<IPrinter> printerMock = new Mock<IPrinter>();
+        Mock<IDisplay> printerMock = new Mock<IDisplay>();
         Mock<IOceanGridGenerator> oceanPrinterMock = new Mock<IOceanGridGenerator>();
-        oceanPrinterMock.Setup(x => x.GetBattleReport(PlayerId.Player1,
+        oceanPrinterMock.Setup(x => x.GetPlayerBattleReport(PlayerId.Player1,
             It.Is<List<Shoot>>(match => match.Count == 1),
             It.Is<List<Ship>>(match => match.Count == 1))).Returns("Report 1");
-        oceanPrinterMock.Setup(x => x.GetBattleReport(PlayerId.Player2,
+        oceanPrinterMock.Setup(x => x.GetPlayerBattleReport(PlayerId.Player2,
             It.Is<List<Shoot>>(match => match.Count == 0),
             It.Is<List<Ship>>(match => match.Count == 2))).Returns("Report 2");
         BattleshipGame game = new BattleshipGame(printerMock.Object, oceanPrinterMock.Object);
@@ -350,11 +350,11 @@ public class BattleshipGameTest
         game.EndTurn(PlayerId.Player1);
 
         // Arrange
-        oceanPrinterMock.Verify(x => x.GetBattleReport(PlayerId.Player1, 
+        oceanPrinterMock.Verify(x => x.GetPlayerBattleReport(PlayerId.Player1, 
             It.Is<List<Shoot>>(match => match.Count == 1),
             It.Is<List<Ship>>(match => match.Count == 1)), Times.Once);
 
-        oceanPrinterMock.Verify(x => x.GetBattleReport(PlayerId.Player2,
+        oceanPrinterMock.Verify(x => x.GetPlayerBattleReport(PlayerId.Player2,
             It.Is<List<Shoot>>(match => match.Count == 0),
             It.Is<List<Ship>>(match => match.Count == 2)), Times.Once);
 

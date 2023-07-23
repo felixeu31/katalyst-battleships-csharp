@@ -1,6 +1,6 @@
 ﻿namespace Battleships.Printers;
 
-public interface IPrinter
+public interface IDisplay
 {
     void WriteLine(string value);
 }
