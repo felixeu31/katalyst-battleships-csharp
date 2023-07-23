@@ -17,9 +17,7 @@ public class BattleshipsApprovalTest
         Console.SetIn(new StringReader("a\n"));
 
         // Act
-        IDisplay display = new ConsoleDisplay();
-        IOceanGridGenerator oceanGridGenerator = new OceanGridGenerator();
-        BattleshipGame game = new BattleshipGame(display, oceanGridGenerator);
+        BattleshipGame game = NewGame();
         game.AddPlayer(PlayerId.Player1, new List<Ship>
         {
             ShipFactory.Build(new Coordinate(2, 7) ),
@@ -34,13 +32,22 @@ public class BattleshipsApprovalTest
             ShipFactory.Build(new Coordinate(2, 7) ),
             ShipFactory.Build(new Coordinate(4, 6) ),});
         game.StartGame(PlayerId.Player1);
-        game.DisplayPlayerGameGrids(PlayerId.Player1);
+        game.Print(PlayerId.Player1);
         game.EndTurn(PlayerId.Player1);
 
         // Assert
         var output = fakeoutput.ToString();
 
         return Verify(output);
+    }
+
+    private static BattleshipGame NewGame()
+    {
+        IDisplay display = new ConsoleDisplay();
+        IOceanGridGenerator oceanGridGenerator = new OceanGridGenerator();
+        IBattleshipGameDisplay gameDisplay = new BattleshipGameDisplay(display, oceanGridGenerator);
+        BattleshipGame game = new BattleshipGame(gameDisplay);
+        return game;
     }
 
 
@@ -53,9 +60,7 @@ public class BattleshipsApprovalTest
         Console.SetIn(new StringReader("a\n"));
 
         // Act
-        IDisplay display = new ConsoleDisplay();
-        IOceanGridGenerator oceanGridGenerator = new OceanGridGenerator();
-        BattleshipGame game = new BattleshipGame(display, oceanGridGenerator);
+        BattleshipGame game = NewGame();
         game.AddPlayer(PlayerId.Player1, new List<Ship>
         {
             ShipFactory.Build(new Coordinate(2, 7) ),
@@ -83,7 +88,7 @@ public class BattleshipsApprovalTest
         game.Fire(PlayerId.Player1, new Coordinate(3, 4));
         game.Fire(PlayerId.Player1, new Coordinate(9, 9));
         game.Fire(PlayerId.Player1, new Coordinate(4, 8));
-        game.DisplayPlayerGameGrids(PlayerId.Player1);
+        game.Print(PlayerId.Player1);
         game.EndTurn(PlayerId.Player1);
 
         // Assert
@@ -101,9 +106,7 @@ public class BattleshipsApprovalTest
         Console.SetIn(new StringReader("a\n"));
 
         // Act
-        IDisplay display = new ConsoleDisplay();
-        IOceanGridGenerator oceanGridGenerator = new OceanGridGenerator();
-        BattleshipGame game = new BattleshipGame(display, oceanGridGenerator);
+        BattleshipGame game = NewGame();
         game.AddPlayer(PlayerId.Player1, new List<Ship>
         {
             ShipFactory.Build(new Coordinate(2, 7) ),
