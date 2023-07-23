@@ -2,7 +2,7 @@
 using Battleships.Ships;
 using Battleships.Shoots;
 
-namespace Battleships.Printers;
+namespace Battleships.Generators;
 
 public interface IOceanGridGenerator
 {

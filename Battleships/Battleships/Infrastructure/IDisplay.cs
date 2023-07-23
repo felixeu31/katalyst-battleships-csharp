@@ -1,4 +1,4 @@
-﻿namespace Battleships.Printers;
+﻿namespace Battleships.Infrastructure;
 
 public interface IDisplay
 {

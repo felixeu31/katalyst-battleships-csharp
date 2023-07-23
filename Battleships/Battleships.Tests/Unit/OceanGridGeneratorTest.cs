@@ -1,5 +1,5 @@
 ﻿using Battleships.GameControls;
-using Battleships.Printers;
+using Battleships.Generators;
 using Battleships.Ships;
 using Battleships.Shoots;
 using FluentAssertions;

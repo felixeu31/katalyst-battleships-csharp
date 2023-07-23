@@ -1,6 +1,7 @@
 using System.Text;
 using Battleships.GameControls;
-using Battleships.Printers;
+using Battleships.Generators;
+using Battleships.Infrastructure;
 using Battleships.Ships;
 
 namespace Battleships.Tests.Approval;

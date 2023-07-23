@@ -1,10 +1,9 @@
 ﻿using System.Text;
-using System.Text.RegularExpressions;
 using Battleships.GameControls;
 using Battleships.Ships;
 using Battleships.Shoots;
 
-namespace Battleships.Printers;
+namespace Battleships.Generators;
 
 public class OceanGridGenerator : IOceanGridGenerator //todo ¿? extract base class or separate in two classes
 {
@@ -96,7 +95,7 @@ public class OceanGridGenerator : IOceanGridGenerator //todo ¿? extract base cl
         {
             stringBuilder.AppendLine(
                 $"\t{sunkShip.ShipType}: ({sunkShip.Coordinates[0].XPosition},{sunkShip.Coordinates[0].YPosition}){(sunkShips.Last() == sunkShip ? "" : ",")}");
-            
+
         }
 
         stringBuilder.Append("]");
@@ -214,7 +213,7 @@ public class OceanGridGenerator : IOceanGridGenerator //todo ¿? extract base cl
     private static bool BelongsToSunkShip(Shoot shoot, List<Shoot> shoots, Coordinate coordinate)
     {
         return shoots.Any(x =>
-            x.ShootDamage == ShootDamage.Sunk 
+            x.ShootDamage == ShootDamage.Sunk
             && x.ShipCoordinates != null &&
             x.ShipCoordinates.Contains(shoot.Coordinate));
     }
