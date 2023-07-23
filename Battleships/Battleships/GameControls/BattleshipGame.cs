@@ -22,7 +22,7 @@ public class BattleshipGame
     public void AddPlayer(PlayerId playerId, List<Ship> ships)
     {
         Players.Add(playerId, new Player(playerId, ships));
-        _display.WriteLine($"{playerId.ToString()} added to the game");
+        DisplayAddedPlayer(playerId);
     }
 
     public void StartGame(PlayerId playerId)
@@ -30,6 +30,7 @@ public class BattleshipGame
         DisplayPlayerAction(playerId, "start");
         _display.WriteLine($"Game started! {playerId.ToString()} starts moving");
     }
+    
     public void Fire(PlayerId playerId, Coordinate coordinate)
     {
         DisplayPlayerAction(playerId, "fire");
@@ -38,7 +39,7 @@ public class BattleshipGame
 
         Players[playerId].AddShoot(shoot);
 
-        _display.WriteLine(shoot.Announce);
+        DisplayShootResult(shoot);
     }
 
     public void EndTurn(PlayerId playerId)
@@ -47,11 +48,13 @@ public class BattleshipGame
 
         if (this.IsFinished)
         {
-            DisplayGameFinishAndBattleReports();
+            DisplayGameWinner(this.Winner);
+            DisplayPlayerBattleReport(PlayerId.Player1, Players[PlayerId.Player1].Shoots, Players[GetOpponent(PlayerId.Player1)].Ships);
+            DisplayPlayerBattleReport(PlayerId.Player2, Players[PlayerId.Player2].Shoots, Players[GetOpponent(PlayerId.Player2)].Ships);
         }
         else
         {
-            _display.WriteLine($"{playerId.ToString()} finished its turn, it is turn for {GetOpponent(playerId).ToString()} to move");
+            DisplayPlayerEndedTurn(playerId, GetOpponent(playerId));
         }
     }
 
@@ -66,42 +69,54 @@ public class BattleshipGame
         return PlayerId.Player1;
     }
 
+    private void DisplayAddedPlayer(PlayerId playerId)
+    {
+        _display.WriteLine($"{playerId.ToString()} added to the game");
+    }
+    private void DisplayShootResult(Shoot shoot)
+    {
+        _display.WriteLine(shoot.Announce);
+    }
+
+    private void DisplayPlayerEndedTurn(PlayerId playerId, PlayerId opponent)
+    {
+        _display.WriteLine(
+            $"{playerId} finished its turn, it is turn for {opponent} to move");
+    }
     public void DisplayPlayerGameGrids(PlayerId playerId)
     {
         DisplayPlayerAction(playerId, "print");
 
-        DisplayPlayerOcean(playerId);
-        DisplayTargetOcean(playerId);
+        DisplayPlayerOcean(Players[playerId].Ships);
+        DisplayTargetOcean(Players[playerId].Shoots);
     }
 
-    private void DisplayPlayerOcean(PlayerId playerId)
+    private void DisplayPlayerOcean(List<Ship> ships)
     {
         _display.WriteLine(@"- My ocean grid:");
-        var playerShipsPositions = Players[playerId].Ships;
-        var oceanPrinted = _oceanGridGenerator.GetPlayersOceanGrid(playerShipsPositions);
+        var oceanPrinted = _oceanGridGenerator.GetPlayersOceanGrid(ships);
         _display.WriteLine(oceanPrinted);
     }
 
-    private void DisplayTargetOcean(PlayerId playerId)
+    private void DisplayTargetOcean(List<Shoot> shoots)
     {
         _display.WriteLine(@"- Target ocean grid:");
-        var targetGrid = _oceanGridGenerator.GetTargetOceanGrid(Players[playerId].Shoots);
+        var targetGrid = _oceanGridGenerator.GetTargetOceanGrid(shoots);
         _display.WriteLine(targetGrid);
     }
 
     private void DisplayPlayerAction(PlayerId playerId, string action)
     {
-        _display.WriteLine($"{playerId.ToString()} invoked: {action}");
+        _display.WriteLine($"{playerId} invoked: {action}");
     }
-    
-    private void DisplayGameFinishAndBattleReports()
+    private void DisplayPlayerBattleReport(PlayerId playerId, List<Shoot> shoots, List<Ship> opponentShips)
     {
-        _display.WriteLine($"Game finished! {this.Winner} won!!");
-        var battleReport1 = _oceanGridGenerator.GetPlayerBattleReport(PlayerId.Player1, Players[PlayerId.Player1].Shoots,
-            Players[GetOpponent(PlayerId.Player1)].Ships);
-        var battleReport2 = _oceanGridGenerator.GetPlayerBattleReport(PlayerId.Player2, Players[PlayerId.Player2].Shoots,
-            Players[GetOpponent(PlayerId.Player2)].Ships);
+        var battleReport1 = _oceanGridGenerator.GetPlayerBattleReport(playerId, shoots, opponentShips);
         _display.WriteLine(battleReport1);
-        _display.WriteLine(battleReport2);
+    }
+
+    private void DisplayGameWinner(PlayerId? winner)
+    {
+        _display.WriteLine($"Game finished! {winner} won!!");
     }
 }
