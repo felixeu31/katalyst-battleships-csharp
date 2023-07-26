@@ -14,7 +14,7 @@ public class OceanGridGeneratorFactory : IOceanGridGeneratorFactory
     {
         return new TargetOceanGridGenerator(shoots, rowNumber, columnNumber);
     }
-    public IOceanGridGenerator CreateTargetOceanGridGenerator(List<Shoot> shoots, List<Ship> opponentShips, int rowNumber = 10, int columnNumber = 10)
+    public IOceanGridGenerator CreateReportOceanGridGenerator(List<Shoot> shoots, List<Ship> opponentShips, int rowNumber = 10, int columnNumber = 10)
     {
         return new ReportOceanGridGenerator(shoots, opponentShips, rowNumber, columnNumber);
     }

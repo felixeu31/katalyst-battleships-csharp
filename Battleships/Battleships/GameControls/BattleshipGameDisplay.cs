@@ -73,7 +73,8 @@ public class BattleshipGameDisplay : IBattleshipGameDisplay
         _display.WriteLine($"Hits: {shoots.Count(x => x.ShootDamage != ShootDamage.Water)}");
         _display.WriteLine(GetShunkshipsRepresentation(opponentShips));
 
-        var battleReport1 = new ReportOceanGridGenerator(shoots, opponentShips).GetGrid();
+        var reportOceanGridGenerator = _oceanGridGeneratorFactory.CreateReportOceanGridGenerator(shoots, opponentShips);
+        var battleReport1 = reportOceanGridGenerator.GetGrid();
         _display.WriteLine(battleReport1);
     }
 

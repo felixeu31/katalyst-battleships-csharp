@@ -7,5 +7,5 @@ public interface IOceanGridGeneratorFactory
 {
     IOceanGridGenerator CreatePlayerOceanGridGenerator(List<Ship> ships, int rowNumber = 10, int columnNumber = 10);
     IOceanGridGenerator CreateTargetOceanGridGenerator(List<Shoot> shoots, int rowNumber = 10, int columnNumber = 10);
-    IOceanGridGenerator CreateTargetOceanGridGenerator(List<Shoot> shoots, List<Ship> opponentShips, int rowNumber = 10, int columnNumber = 10);
+    IOceanGridGenerator CreateReportOceanGridGenerator(List<Shoot> shoots, List<Ship> opponentShips, int rowNumber = 10, int columnNumber = 10);
 }
