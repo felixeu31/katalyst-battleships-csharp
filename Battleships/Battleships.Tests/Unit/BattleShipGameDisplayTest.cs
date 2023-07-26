@@ -9,6 +9,8 @@ namespace Battleships.Tests.Unit;
 
 public class BattleShipGameDisplayTest
 {
+    // TODO add rest of unit test to increase test coverage
+
     [Fact]
     public void should_display_player_ocean()
     {

@@ -68,6 +68,7 @@ public class BattleshipGameDisplay : IBattleshipGameDisplay
     public void DisplayPlayerBattleReport(PlayerId playerId, List<Shoot> shoots, List<Ship> opponentShips)
     {
         _display.WriteLine($"# {playerId} battle report");
+        // TODO extract statistics generation
         _display.WriteLine($"Total shots: {shoots.Count}");
         _display.WriteLine($"Misses: {shoots.Count(x => x.ShootDamage == ShootDamage.Water)}");
         _display.WriteLine($"Hits: {shoots.Count(x => x.ShootDamage != ShootDamage.Water)}");
