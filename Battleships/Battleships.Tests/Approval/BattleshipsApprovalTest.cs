@@ -45,7 +45,8 @@ public class BattleshipsApprovalTest
     private static BattleshipGame NewGame()
     {
         IDisplay display = new ConsoleDisplay();
-        IBattleshipGameDisplay gameDisplay = new BattleshipGameDisplay(display);
+        IOceanGridGeneratorFactory factory = new OceanGridGeneratorFactory();
+        IBattleshipGameDisplay gameDisplay = new BattleshipGameDisplay(display, factory);
         BattleshipGame game = new BattleshipGame(gameDisplay);
         return game;
     }

@@ -10,10 +10,12 @@ namespace Battleships.GameControls;
 public class BattleshipGameDisplay : IBattleshipGameDisplay
 {
     private readonly IDisplay _display;
+    private readonly IOceanGridGeneratorFactory _oceanGridGeneratorFactory;
 
-    public BattleshipGameDisplay(IDisplay display)
+    public BattleshipGameDisplay(IDisplay display, IOceanGridGeneratorFactory oceanGridGeneratorFactory)
     {
         _display = display;
+        _oceanGridGeneratorFactory = oceanGridGeneratorFactory;
     }
 
     public void DisplayGameWelcome()
@@ -67,7 +69,6 @@ public class BattleshipGameDisplay : IBattleshipGameDisplay
         _display.WriteLine($"Total shots: {shoots.Count}");
         _display.WriteLine($"Misses: {shoots.Count(x => x.ShootDamage == ShootDamage.Water)}");
         _display.WriteLine($"Hits: {shoots.Count(x => x.ShootDamage != ShootDamage.Water)}");
-
         _display.WriteLine(GetShunkshipsRepresentation(opponentShips));
 
         var battleReport1 = new ReportOceanGridGenerator(shoots, opponentShips).GetGrid();
