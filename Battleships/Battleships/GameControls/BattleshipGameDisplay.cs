@@ -47,7 +47,8 @@ public class BattleshipGameDisplay : IBattleshipGameDisplay
     public void DisplayPlayerOcean(List<Ship> ships)
     {
         _display.WriteLine(@"- My ocean grid:");
-        var oceanPrinted = new PlayerOceanGridGenerator(ships).GetGrid();
+        var playerOceanGridGenerator = _oceanGridGeneratorFactory.CreatePlayerOceanGridGenerator(ships);
+        var oceanPrinted = playerOceanGridGenerator.GetGrid();
         _display.WriteLine(oceanPrinted);
     }
 
