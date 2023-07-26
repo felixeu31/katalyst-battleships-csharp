@@ -25,8 +25,8 @@ public class BattleShipGameDisplayTest
         battleshipGameDisplay.DisplayTargetOcean(shoots);
 
         // Assert
-        displayMock.Verify(x => x.WriteLine("- My ocean grid:"), Times.Once);
+        displayMock.Verify(x => x.WriteLine("- Target ocean grid:"), Times.Once);
         displayMock.Verify(d => d.WriteLine("Mocked target grid"), Times.Once);
-
+        oceanGridGeneratorFactoryMock.Verify(f => f.CreateTargetOceanGridGenerator(shoots, It.IsAny<int>(), It.IsAny<int>()), Times.Once);
     }
 }

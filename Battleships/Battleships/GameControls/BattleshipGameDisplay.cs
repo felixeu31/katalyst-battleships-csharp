@@ -54,7 +54,8 @@ public class BattleshipGameDisplay : IBattleshipGameDisplay
     public void DisplayTargetOcean(List<Shoot> shoots)
     {
         _display.WriteLine(@"- Target ocean grid:");
-        var targetGrid = new TargetOceanGridGenerator(shoots).GetGrid();
+        var targetOceanGridGenerator = _oceanGridGeneratorFactory.CreateTargetOceanGridGenerator(shoots);
+        var targetGrid = targetOceanGridGenerator.GetGrid();
         _display.WriteLine(targetGrid);
     }
 
