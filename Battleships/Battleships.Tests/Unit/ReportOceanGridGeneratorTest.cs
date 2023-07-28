@@ -27,8 +27,10 @@ public class ReportOceanGridGeneratorTest
             Shoot.Hit(new Coordinate(0, 2)),
         };
         var ship = ShipFactory.Build(new Coordinate(0,0), new Coordinate(1,0), new Coordinate(2,0));
-        ship.HitCoordinates = new List<Coordinate>()
-            { new Coordinate(0, 0), new Coordinate(1, 0), new Coordinate(2, 0) };
+        ship.ShootAt(new Coordinate(0, 0));
+        ship.ShootAt(new Coordinate(1, 0));
+        ship.ShootAt(new Coordinate(2, 0));
+
         List<Ship> ships = new List<Ship>()
         {
             ship,

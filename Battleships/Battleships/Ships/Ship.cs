@@ -6,21 +6,23 @@ namespace Battleships.Ships;
 public abstract class Ship
 {
     private readonly Coordinate[] _coordinates;
+    private List<Coordinate> _hitCoordinates;
 
-    public Coordinate[] Coordinates => _coordinates;
-    public List<Coordinate> HitCoordinates { get; set; } = new List<Coordinate>();
     public abstract ShipType ShipType { get; }
 
     public Ship(params Coordinate[] coordinates)
     {
         _coordinates = coordinates;
+        _hitCoordinates = new List<Coordinate>();
     }
+    public Coordinate[] Coordinates => _coordinates;
+    public IReadOnlyList<Coordinate> HitCoordinates => _hitCoordinates;
     
     public bool IsSunk => _coordinates.All(x => HitCoordinates.Contains(x));
 
     public Shoot ShootAt(Coordinate coordinate)
     {
-        HitCoordinates.Add(coordinate);
+        _hitCoordinates.Add(coordinate);
 
         if (IsSunk)
         {
