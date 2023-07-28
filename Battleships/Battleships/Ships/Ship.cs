@@ -16,9 +16,8 @@ public abstract class Ship
         _hitCoordinates = new List<Coordinate>();
     }
     public IReadOnlyList<Coordinate> Coordinates => _coordinates;
-    public IReadOnlyList<Coordinate> HitCoordinates => _hitCoordinates;
     
-    public bool IsSunk => _coordinates.All(x => HitCoordinates.Contains(x));
+    public bool IsSunk => _coordinates.All(x => _hitCoordinates.Contains(x));
 
     public Shoot ShootAt(Coordinate coordinate)
     {
