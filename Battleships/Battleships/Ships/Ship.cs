@@ -5,7 +5,7 @@ namespace Battleships.Ships;
 
 public abstract class Ship
 {
-    private Coordinate[] _coordinates;
+    private IReadOnlyList<Coordinate> _coordinates;
     private List<Coordinate> _hitCoordinates;
 
     public abstract ShipType ShipType { get; }
