@@ -5,8 +5,8 @@ namespace Battleships.Ships;
 
 public abstract class Ship
 {
-    private IReadOnlyList<Coordinate> _coordinates;
-    private List<Coordinate> _hitCoordinates;
+    private readonly IReadOnlyList<Coordinate> _coordinates;
+    private readonly List<Coordinate> _hitCoordinates;
 
     public abstract ShipType ShipType { get; }
 
@@ -16,9 +16,8 @@ public abstract class Ship
         _hitCoordinates = new List<Coordinate>();
     }
     public IReadOnlyList<Coordinate> Coordinates => _coordinates;
-    public IReadOnlyList<Coordinate> HitCoordinates => _hitCoordinates;
     
-    public bool IsSunk => _coordinates.All(x => HitCoordinates.Contains(x));
+    public bool IsSunk => _coordinates.All(x => _hitCoordinates.Contains(x));
 
     public Shoot ShootAt(Coordinate coordinate)
     {
