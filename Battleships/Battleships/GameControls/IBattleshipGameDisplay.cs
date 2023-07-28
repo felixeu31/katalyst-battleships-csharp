@@ -10,9 +10,9 @@ public interface IBattleshipGameDisplay
     void DisplayAddedPlayer(PlayerId playerId);
     void DisplayShootResult(Shoot shoot);
     void DisplayPlayerEndedTurn(PlayerId playerId, PlayerId opponent);
-    void DisplayPlayerOcean(List<Ship> ships);
-    void DisplayTargetOcean(List<Shoot> shoots);
+    void DisplayPlayerOcean(IReadOnlyList<Ship> ships);
+    void DisplayTargetOcean(IReadOnlyList<Shoot> shoots);
     void DisplayPlayerAction(PlayerId playerId, string action);
-    void DisplayPlayerBattleReport(PlayerId playerId, List<Shoot> shoots, List<Ship> opponentShips);
+    void DisplayPlayerBattleReport(PlayerId playerId, IReadOnlyList<Shoot> shoots, IReadOnlyList<Ship> opponentShips);
     void DisplayGameWinner(PlayerId? winner);
 }

@@ -6,10 +6,11 @@ namespace Battleships.Generators;
 
 public class ReportOceanGridGenerator : OceanGridGenerator
 {
-    private readonly List<Shoot> _shoots;
-    private readonly List<Ship> _opponentShips;
+    private readonly IReadOnlyList<Shoot> _shoots;
+    private readonly IReadOnlyList<Ship> _opponentShips;
 
-    public ReportOceanGridGenerator(List<Shoot> shoots, List<Ship> opponentShips, int rowNumber = 10, int columnNumber = 10) : base(rowNumber, columnNumber)
+    public ReportOceanGridGenerator(IReadOnlyList<Shoot> shoots, IReadOnlyList<Ship> opponentShips, int rowNumber = 10,
+        int columnNumber = 10) : base(rowNumber, columnNumber)
     {
         _shoots = shoots;
         _opponentShips = opponentShips;
@@ -37,7 +38,7 @@ public class ReportOceanGridGenerator : OceanGridGenerator
 
         return " ";
     }
-    private static bool BelongsToSunkShip(Shoot shoot, List<Shoot> shoots)
+    private static bool BelongsToSunkShip(Shoot shoot, IReadOnlyList<Shoot> shoots)
     {
         return shoots.Any(x =>
             x.ShootDamage == ShootDamage.Sunk

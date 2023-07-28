@@ -5,9 +5,9 @@ namespace Battleships.Generators;
 
 public class PlayerOceanGridGenerator : OceanGridGenerator
 {
-    private readonly List<Ship> _ships;
+    private readonly IReadOnlyList<Ship> _ships;
 
-    public PlayerOceanGridGenerator(List<Ship> ships, int rowNumber = 10, int columnNumber = 10) : base(rowNumber, columnNumber)
+    public PlayerOceanGridGenerator(IReadOnlyList<Ship> ships, int rowNumber = 10, int columnNumber = 10) : base(rowNumber, columnNumber)
     {
         _ships = ships;
     }

@@ -44,7 +44,7 @@ public class BattleshipGameDisplay : IBattleshipGameDisplay
             $"{playerId} finished its turn, it is turn for {opponent} to move");
     }
 
-    public void DisplayPlayerOcean(List<Ship> ships)
+    public void DisplayPlayerOcean(IReadOnlyList<Ship> ships)
     {
         _display.WriteLine(@"- My ocean grid:");
         var playerOceanGridGenerator = _oceanGridGeneratorFactory.CreatePlayerOceanGridGenerator(ships);
@@ -52,7 +52,7 @@ public class BattleshipGameDisplay : IBattleshipGameDisplay
         _display.WriteLine(oceanPrinted);
     }
 
-    public void DisplayTargetOcean(List<Shoot> shoots)
+    public void DisplayTargetOcean(IReadOnlyList<Shoot> shoots)
     {
         _display.WriteLine(@"- Target ocean grid:");
         var targetOceanGridGenerator = _oceanGridGeneratorFactory.CreateTargetOceanGridGenerator(shoots);
@@ -65,7 +65,7 @@ public class BattleshipGameDisplay : IBattleshipGameDisplay
         _display.WriteLine($"{playerId} invoked: {action}");
     }
 
-    public void DisplayPlayerBattleReport(PlayerId playerId, List<Shoot> shoots, List<Ship> opponentShips)
+    public void DisplayPlayerBattleReport(PlayerId playerId, IReadOnlyList<Shoot> shoots, IReadOnlyList<Ship> opponentShips)
     {
         _display.WriteLine($"# {playerId} battle report");
         // TODO extract statistics generation
@@ -83,7 +83,7 @@ public class BattleshipGameDisplay : IBattleshipGameDisplay
     {
         _display.WriteLine($"Game finished! {winner} won!!");
     }
-    private string GetShunkshipsRepresentation(List<Ship> opponentShips)
+    private string GetShunkshipsRepresentation(IReadOnlyList<Ship> opponentShips)
     {
         StringBuilder stringBuilder = new StringBuilder();
 
